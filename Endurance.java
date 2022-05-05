@@ -7,6 +7,8 @@ public class Endurance {
 		if(obj instanceof Weapon) {
 			Weapon temp = (Weapon) obj;
 			
+			if(temp.getPow() > 0)
+				temp.setPow(temp.getEndurance() - temp.getType().endurance);
 		}
 		else if(obj instanceof Armor) {
 			Armor temp = (Armor) obj;

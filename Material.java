@@ -1,7 +1,7 @@
 package com.iteso.motor;
 
 public enum Material {
-	GOLD(100),
+	GOLD(75),
 	IRON(50),
 	COPPER(25);
 	
