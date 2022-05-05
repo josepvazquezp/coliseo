@@ -1,8 +1,10 @@
 package com.iteso.motor;
 
 public class Weapon {
-	private int pow, weight, x, y, capacity, distance;
+	private int pow, weight, x, y, capacity, distance, resistance;
 	private boolean flyable;
+	private Material type;
+	String name;
 	
 	
 	public int getPow() {
@@ -47,6 +49,23 @@ public class Weapon {
 	public void setFlyable(boolean flyable) {
 		this.flyable = flyable;
 	}
-	
+	public Material getType() {
+		return this.type;
+	}
+	public void setType(Material type) {
+		this.type = type;
+	}
+	public int getResistance() {
+		return this.resistance;
+	}
+	public void setResistance(int resistance) {
+		this.resistance = resistance;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }
