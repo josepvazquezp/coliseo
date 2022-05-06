@@ -1,11 +1,17 @@
 package com.iteso.motor;
 
-public class Armor {
-	private int defense, weight;
-	private Endurance endurance;
+public class Armor extends EnduranceObject {
+	private int defense, weight, endurance;
 	private boolean helmet = false;
 	private String name, category;
 	private Material type;
+	
+	public void decrease() {
+		if(this.getDefense() > 0)
+			this.setDefense(this.getDefense() - this.type.getEndurance());
+		else if(this.getEndurance() < 0)
+			this.setEndurance(0);
+	}
 
 	public int getDefense() {
 		return this.defense;
@@ -23,11 +29,11 @@ public class Armor {
 		this.weight = weight;
 	}
 	
-	public Endurance getEndurance() {
+	public int getEndurance() {
 		return this.endurance;
 	}
 
-	public void setEndurance(Endurance endurance) {
+	public void setEndurance(int endurance) {
 		this.endurance = endurance;
 	}
 

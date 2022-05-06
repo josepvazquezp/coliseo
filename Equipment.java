@@ -1,7 +1,5 @@
 package com.iteso.motor;
 
-import proyecto.Armors;
-
 public class Equipment {
 	private Weapon weaponR = null, weaponL = null;
 	private Armor armorH = null, armorB = null, armorS = null;
@@ -23,14 +21,14 @@ public class Equipment {
 			this.weaponR = weaponR;
 			this.weaponCapacity += weaponR.getCapacity();
 			
-			if(this.weaponR.getName().equals("shield")) {
-				if(this.armorS == null)
-					this.armorS = Armors.SHIELD.getArmor();
-				else {
-					this.armorS.setDefense(this.armorS.getDefense() * 2);
-					this.armorS.setWeight(this.armorS.getWeight() * 2);
-				}
-			}
+//			if(this.weaponR.getType().getName().equals("shield")) {
+//				if(this.armorS == null)
+//					this.armorS = Armors.SHIELD.getArmor();
+//				else {
+//					this.armorS.setDefense(this.armorS.getDefense() * 2);
+//					this.armorS.setWeight(this.armorS.getWeight() * 2);
+//				}
+//			}
 		}
 		else
 			System.out.println("Weapon selected exceed max capacity");
@@ -45,14 +43,14 @@ public class Equipment {
 			this.weaponL = weaponL;
 			this.weaponCapacity += weaponL.getCapacity();
 			
-			if(this.weaponL.getName().equals("shield")) {
-				if(this.armorS == null)
-					this.armorS = Armors.SHIELD.getArmor();
-				else {
-					this.armorS.setDefense(this.armorS.getDefense() * 2);
-					this.armorS.setWeight(this.armorS.getWeight() * 2);
-				}
-			}
+//			if(this.weaponL.getName().equals("shield")) {
+//				if(this.armorS == null)
+//					this.armorS = Armors.SHIELD.getArmor();
+//				else {
+//					this.armorS.setDefense(this.armorS.getDefense() * 2);
+//					this.armorS.setWeight(this.armorS.getWeight() * 2);
+//				}
+//			}
 		}
 		else
 			System.out.println("Weapon selected exceed max capacity");
