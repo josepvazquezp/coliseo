@@ -12,21 +12,21 @@ public class Material {
 	}
 	
 	public void setMaterial(String name, int endurance) {
-		int temp = Material.data.size();
-		Material.data.put(name, endurance);
-		
-		if(temp < Material.data.size()) {
+		if(Material.data.get(name) == null) {
 			this.name = name;
 			this.endurance = endurance;
+			Material.data.put(name, endurance);
 		}
-		else
+		else {
 			System.out.println("El material ya existe");
+		}
 	}
 	
-	public void changeEndurance(String name, int endurance) {
-		if(Material.data.get(name) != null) {
+	public void changeEndurance(String name, int endurance) {			
+		if(Material.data.get(name) != null) {							
 			Material.data.remove(name);
 			Material.data.put(name, endurance);
+			this.endurance = endurance;
 		}
 	}
 	
