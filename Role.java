@@ -116,5 +116,16 @@ public class Role {
 		this.setTopDefense(topDefense);
 		this.setMidDefense(midDefense);
 	}
+	
+	public void move(int toSum, Direction direction) {
+		if(direction == Direction.UP)
+			this.y += toSum;
+		else if(direction == Direction.DOWN)
+			this.y -= toSum;
+		else if(direction == Direction.RIGHT)
+			this.x += toSum;
+		else if(direction == Direction.LEFT)
+			this.x -= toSum;
+	}
 
 }
