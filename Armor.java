@@ -1,16 +1,28 @@
 package com.iteso.motor;
 
 public class Armor extends EnduranceObject {
-	private int defense, weight, endurance;
+	private int defense, weight;
 	private boolean helmet = false;
-	private String name, category;
+	private String name;
 	private Material type;
+	
+	public Armor() {
+		
+	}
+	
+	public Armor(int defense, int weight, boolean helmet, String name, Material type) {
+		this.setDefense(defense);
+		this.setWeight(weight);
+		this.setHelmet(helmet);
+		this.setName(name);
+		this.setType(type);
+	}
 	
 	public void decrease() {
 		if(this.getDefense() > 0)
 			this.setDefense(this.getDefense() - this.type.getEndurance());
-		else if(this.getEndurance() < 0)
-			this.setEndurance(0);
+		else if(this.getDefense() < 0)
+			this.setDefense(0);;
 	}
 
 	public int getDefense() {
@@ -27,14 +39,6 @@ public class Armor extends EnduranceObject {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
-	}
-	
-	public int getEndurance() {
-		return this.endurance;
-	}
-
-	public void setEndurance(int endurance) {
-		this.endurance = endurance;
 	}
 
 	public boolean isHelmet() {
@@ -53,14 +57,6 @@ public class Armor extends EnduranceObject {
 		this.name = name;
 	}
 
-	public String getCategory() {
-		return this.category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public Material getType() {
 		return this.type;
 	}
@@ -69,5 +65,11 @@ public class Armor extends EnduranceObject {
 		this.type = type;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Armor: %s \tType: [%s]\nDefense: %d \tWeight: %d \tHelmet: %b", 
+				             this.getName(), this.getType().toString(), this.getDefense(), 
+				             this.getWeight(), this.isHelmet());
+	}
 	
 }

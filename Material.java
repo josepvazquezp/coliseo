@@ -11,6 +11,14 @@ public class Material {
 		data = new TreeMap<String, Integer>();
 	}
 	
+	public Material() {
+		
+	}
+	
+	public Material(String name, int endurance) {
+		this.setMaterial(name, endurance);
+	}
+	
 	public void setMaterial(String name, int endurance) {
 		if(Material.data.get(name) == null) {
 			this.name = name;
@@ -40,5 +48,10 @@ public class Material {
 	
 	public int getEndurance() {
 		return this.endurance;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Material: %s    Endurance: %d", this.getName(), this.getEndurance());
 	}
 }

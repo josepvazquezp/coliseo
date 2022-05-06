@@ -6,6 +6,23 @@ public class Weapon extends EnduranceObject{
 	private Material type;
 	String name;
 	
+	public Weapon() {
+		
+	}
+	
+	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, Material type, String name) {
+		this.setPow(pow);
+		this.setWeight(weight);
+		this.setX(x);
+		this.setY(y);
+		this.setCapacity(capacity);
+		this.setDistance(distance);
+		this.setEndurance(endurance);
+		this.setFlyable(flyable);
+		this.setType(type);
+		this.setName(name);
+	}
+	
 	public void decrease() {
 		if(this.getEndurance() > 0)
 			this.setEndurance(this.getEndurance() - this.type.getEndurance());
@@ -93,4 +110,10 @@ public class Weapon extends EnduranceObject{
 		this.name = name;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Weapon: %s \tType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d", 
+				             this.getName(), this.getType().toString(), this.isFlyable(), this.getPow(), this.getWeight(),
+				             this.getDistance(), this.getEndurance(), this.getCapacity());
+	}
 }

@@ -7,7 +7,7 @@ public enum Roles {
 	STANDAR(200, 500),
 	TANK(300, 300);
 	
-	private Role r;
+	private Role r = new Role();
 	
 	private Roles(int hp, int speed) {
 		this.r.setHp(hp);

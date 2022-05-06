@@ -5,6 +5,17 @@ public class Equipment {
 	private Armor armorH = null, armorB = null, armorS = null;
 	private int weaponCapacity = 0;
 	
+	public Equipment() {
+		
+	}
+	
+	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB) {
+		this.setWeaponL(weaponL);
+		this.setWeaponR(weaponR);
+		this.setArmorH(armorH);
+		this.setArmorB(armorB);
+	}
+	
 	private boolean checkCapacity(Weapon weapon) {
 		if(this.weaponCapacity + weapon.getCapacity() < 3)
 			return true;
@@ -70,12 +81,25 @@ public class Equipment {
 	}
 	
 	public void setArmorB(Armor armorB) {
-		if(this.armorB == null && armorB.isHelmet())
+		if(this.armorB == null && armorB.isHelmet() == false)
 			this.armorB = armorB;
 	}
 	
 	public Armor getArmorS() {
 		return this.armorS;
+	}
+	
+	public int getWeaponCapacity() {
+		return this.weaponCapacity;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Weapon capacity: %d\n\nLeft Weapon:\n%s\n\nRight  Weapon:\n%s\n\nHelmet:\n%s\n\nBreastplate:\n%s", 
+				              this.getWeaponCapacity(), this.getWeaponL() == null? "null" : this.getWeaponL().toString(), 
+				              this.getWeaponR() == null? "null" : this.getWeaponR().toString(), 
+				              this.getArmorH() == null? "null" : this.getArmorH().toString(), 
+				              this.getArmorB() == null? "null" : this.getArmorB().toString());
 	}
 
 }
