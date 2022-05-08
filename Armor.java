@@ -72,4 +72,18 @@ public class Armor extends EnduranceObject {
 				             this.getWeight(), this.isHelmet());
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Armor))
+			return false;
+		
+		Armor a = (Armor) o;
+		return this.getDefense() == a.getDefense() && this.getWeight() == a.getWeight() && 
+			   this.isHelmet() == a.isHelmet() && this.getName().equals(a.getName()) && this.getType().equals(a.getType());
+	}
+	
+	public Armor clone() {
+		return new Armor(this.getDefense(), this.getWeight(), this.isHelmet(), this.getName(), this.getType());
+	}
+	
 }

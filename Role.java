@@ -154,11 +154,43 @@ public class Role {
 		}
 	}
 	
+	public boolean hit(int long1, int height1, Weapon weapon, int long2, int height2) {
+		double minXRole = this.getX() - long1 / 2.0;
+		double maxXRole = this.getX() + long1 / 2.0;
+		double minYRole = this.getY() - height1 / 2.0;
+		double maxYRole = this.getY() + height1 / 2.0;
+		double minXWeapon = weapon.getX() - long2 / 2.0;
+		double maxXWeapon = weapon.getX() - long2 / 2.0;
+		double minYWeapon = weapon.getY() - height2 / 2.0;
+		double maxYWeapon = weapon.getY() - height2 / 2.0;
+		
+		if(((minXWeapon >= minXRole && minXWeapon <= maxXRole) | (maxXWeapon >= minXRole && maxXWeapon <= maxXRole)) && 
+		   ((minYWeapon >= minYRole && minYWeapon <= maxYRole) | (maxYWeapon >= minYRole && maxYWeapon <= maxYRole)))
+			return true;
+		
+		return false;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("Left Pow: %d\tRight Pow: %d\nHP: %d\tPosition: (%d, %d)\tBaseSpeed:%d \tSpeed: %d\nWeight: %d\tTop defense: %d\t    Mid defense: %d\nEquipment: \n%s", 
-				             this.getPowL(), this.getPowR(), this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(),this.getSpeed(), this.getTotalWeight(), 
+				             this.getPowL(), this.getPowR(), this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(),
+				             this.getSpeed(), this.getTotalWeight(), 
 				             this.getTopDefense(), this.getMidDefense(), this.getE());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Role))
+			return false;
+		
+		Role r = (Role) o;
+		return this.getHp() == r.getHp() && this.getX() == r.getX() && this.getY() == r.getY() && 
+			   this.getBaseSpeed() == r.getBaseSpeed() && this.getE().equals(r.getE());
+	}
+	
+	public Role clone() {
+		return new Role(this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(), this.getE());
 	}
 
 }

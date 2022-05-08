@@ -54,4 +54,14 @@ public class Material {
 	public String toString() {
 		return String.format("Material: %s    Endurance: %d", this.getName(), this.getEndurance());
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Material))
+			return false;
+		
+		Material m = (Material) o;
+		return this.getName().equals(m.getName()) && this.getEndurance() == m.getEndurance(); 
+	}
+	
 }

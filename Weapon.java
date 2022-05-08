@@ -10,7 +10,7 @@ public class Weapon extends EnduranceObject{
 		
 	}
 	
-	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, Material type, String name) {
+	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, String name, Material type) {
 		this.setPow(pow);
 		this.setWeight(weight);
 		this.setX(x);
@@ -115,5 +115,22 @@ public class Weapon extends EnduranceObject{
 		return String.format("Weapon: %s \tType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d", 
 				             this.getName(), this.getType().toString(), this.isFlyable(), this.getPow(), this.getWeight(),
 				             this.getDistance(), this.getEndurance(), this.getCapacity());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Weapon))
+			return false;
+		
+		Weapon w = (Weapon) o;
+		return this.getPow() == w.getPow() && this.getWeight() == w.getWeight() && 
+			   this.getDistance() == w.getDistance() && this.getEndurance() == w.getEndurance() &&
+			   this.getCapacity() == w.getCapacity() && this.isFlyable() == w.isFlyable() &&
+			   this.getName().equals(w.getName()) && this.getType().equals(w.getType());
+	}
+	
+	public Weapon clone() {
+		return new Weapon(this.getPow(), this.getWeight(), this.getX(), this.getY(), this.getCapacity(), 
+				          this.getDistance(), this.getEndurance(), this.isFlyable(), this.getName(), this.getType());
 	}
 }
