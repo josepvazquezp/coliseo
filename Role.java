@@ -3,6 +3,7 @@ package com.iteso.motor;
 public class Role {
 	private int powR = 0, powL = 0, hp, x, y, speed, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
 	private Equipment e;
+	public final double GRAVEDAD = 9.81;
 	
 	public Role() {
 		
@@ -160,15 +161,42 @@ public class Role {
 		double minYRole = this.getY() - height1 / 2.0;
 		double maxYRole = this.getY() + height1 / 2.0;
 		double minXWeapon = weapon.getX() - long2 / 2.0;
-		double maxXWeapon = weapon.getX() - long2 / 2.0;
+		double maxXWeapon = weapon.getX() + long2 / 2.0;
 		double minYWeapon = weapon.getY() - height2 / 2.0;
-		double maxYWeapon = weapon.getY() - height2 / 2.0;
+		double maxYWeapon = weapon.getY() + height2 / 2.0;
 		
-		if(((minXWeapon >= minXRole && minXWeapon <= maxXRole) | (maxXWeapon >= minXRole && maxXWeapon <= maxXRole)) && 
-		   ((minYWeapon >= minYRole && minYWeapon <= maxYRole) | (maxYWeapon >= minYRole && maxYWeapon <= maxYRole)))
+		if(((minXWeapon >= minXRole && minXWeapon <= maxXRole) || (maxXWeapon >= minXRole && maxXWeapon <= maxXRole)) && 
+		   ((minYWeapon >= minYRole && minYWeapon <= maxYRole) || (maxYWeapon >= minYRole && maxYWeapon <= maxYRole)))
 			return true;
 		
 		return false;
+	}
+	
+	public void shot(Weapon w, Role r, int x, int y, double angle, int longR, int heightR, int longW, int heightW) { //throws InterruptedException{
+		if(x < 0)				// generar sino un exception para todo esto
+			x = 0;
+		if(y < 0)
+			y = 0;
+		if(angle < 0)
+			angle = 0;
+		if(longR < 0)
+			longR = 0;
+		if(heightR < 0)
+			heightR = 0;
+		if(longW < 0)
+			longW = 0;
+		if(heightW < 0)
+			heightW = 0;
+		
+		double v0x = 10 * Math.cos(angle);
+		double v0y = 10 * Math.sin(angle);
+//		(int) v0x)
+		
+		while(r.hit(longR, heightR, w, longW, heightW) == false || (w.getX() < x && w.getY() > y)) {
+			w.setX(w.getX() + (int) (((int) v0x) * 0.5));
+			w.setY(w.getY() - (int) ((Math.pow(v0y, 0.5)) - (0.5 * GRAVEDAD * Math.pow(0.5, 2.0))));
+			System.out.printf("%d, %d\n", w.getX(), w.getY());
+		}
 	}
 	
 	@Override
