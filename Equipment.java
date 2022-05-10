@@ -9,11 +9,12 @@ public class Equipment {
 		
 	}
 	
-	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB) {
+	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB, Armor armorS) {
 		this.setWeaponL(weaponL);
 		this.setWeaponR(weaponR);
 		this.setArmorH(armorH);
 		this.setArmorB(armorB);
+		this.setArmorS(armorS);
 	}
 	
 	private boolean checkCapacity(Weapon weapon) {
@@ -32,15 +33,6 @@ public class Equipment {
 			if(this.checkCapacity(weaponR)) {
 				this.weaponR = weaponR;
 				this.weaponCapacity += weaponR.getCapacity();
-				
-	//			if(this.weaponR.getType().getName().equals("shield")) {
-	//				if(this.armorS == null)
-	//					this.armorS = Armors.SHIELD.getArmor();
-	//				else {
-	//					this.armorS.setDefense(this.armorS.getDefense() * 2);
-	//					this.armorS.setWeight(this.armorS.getWeight() * 2);
-	//				}
-	//			}
 			}
 			else 
 				System.out.println("Weapon selected exceed max capacity");
@@ -56,15 +48,6 @@ public class Equipment {
 			if(this.checkCapacity(weaponL)) {
 				this.weaponL = weaponL;
 				this.weaponCapacity += weaponL.getCapacity();
-				
-	//			if(this.weaponL.getName().equals("shield")) {
-	//				if(this.armorS == null)
-	//					this.armorS = Armors.SHIELD.getArmor();
-	//				else {
-	//					this.armorS.setDefense(this.armorS.getDefense() * 2);
-	//					this.armorS.setWeight(this.armorS.getWeight() * 2);
-	//				}
-	//			}
 			}
 			else
 				System.out.println("Weapon selected exceed max capacity");
@@ -93,6 +76,10 @@ public class Equipment {
 		return this.armorS;
 	}
 	
+	public void setArmorS(Armor armorS) {
+		this.armorS = armorS;
+	}
+	
 	public int getWeaponCapacity() {
 		return this.weaponCapacity;
 	}
@@ -103,7 +90,8 @@ public class Equipment {
 				              this.getWeaponCapacity(), this.getWeaponL() == null? "null" : this.getWeaponL().toString(), 
 				              this.getWeaponR() == null? "null" : this.getWeaponR().toString(), 
 				              this.getArmorH() == null? "null" : this.getArmorH().toString(), 
-				              this.getArmorB() == null? "null" : this.getArmorB().toString());
+				              this.getArmorB() == null? "null" : this.getArmorB().toString(),
+				              this.getArmorS() == null? "null" : this.getArmorS().toString());
 	}
 	
 	@Override
@@ -115,89 +103,76 @@ public class Equipment {
 		
 		if(this.getWeaponL() == null && this.getWeaponR() != null &&
 		   this.getArmorH() != null && this.getArmorB() != null) {
-//				   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR()) &&
 				   this.getArmorH().equals(e.getArmorH()) && this.getArmorB().equals(e.getArmorB());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() == null &&
 				this.getArmorH() != null && this.getArmorB() != null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponL().equals(e.getWeaponL()) &&
 				   this.getArmorH().equals(e.getArmorH()) && this.getArmorB().equals(e.getArmorB());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() != null &&
 				this.getArmorH() == null && this.getArmorB() != null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR()) && this.getWeaponL().equals(e.getWeaponL()) &&
 				   this.getArmorB().equals(e.getArmorB());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() != null &&
 				this.getArmorH() != null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR()) && this.getWeaponL().equals(e.getWeaponL()) &&
 				   this.getArmorH().equals(e.getArmorH());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() == null &&
 				this.getArmorH() == null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponL().equals(e.getWeaponL());
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() != null &&
 				this.getArmorH() == null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() == null &&
 				this.getArmorH() != null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponL().equals(e.getWeaponL()) &&
 				   this.getArmorH().equals(e.getArmorH());
 		}
 		else if(this.getWeaponL() != null && this.getWeaponR() == null &&
 				this.getArmorH() == null && this.getArmorB() != null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponL().equals(e.getWeaponL()) &&
 				   this.getArmorB().equals(e.getArmorB());
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() != null &&
 				this.getArmorH() != null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR()) &&
 				   this.getArmorH().equals(e.getArmorH());
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() != null &&
 				this.getArmorH() == null && this.getArmorB() != null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getWeaponR().equals(e.getWeaponR()) &&
 				   this.getArmorB().equals(e.getArmorB());
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() == null &&
 				this.getArmorH() == null && this.getArmorB() != null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getArmorB().equals(e.getArmorB());	
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() == null &&
 				this.getArmorH() != null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			return this.getArmorH().equals(e.getArmorH());	
 		}
 		else if(this.getWeaponL() == null && this.getWeaponR() == null &&
 				this.getArmorH() == null && this.getArmorB() == null) {
-//			   && this.getArmorS() != null	   ) {
 			System.out.println("Empty equipment");
 			return false;	
 		}
 			
 		return this.getWeaponR().equals(e.getWeaponR()) && this.getWeaponL().equals(e.getWeaponL()) &&
 			   this.getArmorH().equals(e.getArmorH()) && this.getArmorB().equals(e.getArmorB());
-//			   && this.getArmorS().equals(e.getArmorS()) && this.getWeaponCapacity() == e.getWeaponCapacity();
 	}
 	
 	public Equipment clone() {
 		return new Equipment(this.getWeaponR() == null?  null : this.getWeaponR(), 
 							 this.getWeaponL() == null? null : this.getWeaponL(), 
 							 this.getArmorH() == null? null : this.getArmorH(), 
-							 this.getArmorB() == null? null : this.getArmorB()); // e.getArmorS()
+							 this.getArmorB() == null? null : this.getArmorB(),
+							 this.getArmorS() == null? null : this.getArmorS());
 	}
 
 }
