@@ -89,27 +89,39 @@ public class Equipment {
 		return this.armorH;
 	}
 	/**
-	 * Establece la armadura casco del objeto
+	 * Establece la Armadura casco del objeto
 	 * @param armorH Armadura casco que se le asignara al objeto
 	 */
 	public void setArmorH(Armor armorH) {
 		if(armorH != null && this.armorH == null && armorH.isHelmet())
 			this.armorH = armorH;
 	}
-	
+	/**
+	 * Método para regresar Armadura breastplate del objeto
+	 * @return Regresa Armadura breastplate del objeto
+	 */
 	public Armor getArmorB() {
 		return this.armorB;
 	}
-	
+	/**
+	 * Establece la Armadura breastplate del objeto
+	 * @param armorH Armadura breastplate que se le asignara al objeto
+	 */
 	public void setArmorB(Armor armorB) {
 		if(armorB != null && this.armorB == null && armorB.isHelmet() == false)
 			this.armorB = armorB;
 	}
-	
+	/**
+	 * Método para regresar Armadura shield del objeto
+	 * @return Regresa Armadura shield del objeto
+	 */
 	public Armor getArmorS() {
 		return this.armorS;
 	}
-	
+	/**
+	 * Establece la Armadura shield del objeto
+	 * @param armorH Armadura shield que se le asignara al objeto
+	 */
 	public void setArmorS(Armor armorS) {
 		this.armorS = armorS;
 	}
@@ -135,8 +147,8 @@ public class Equipment {
 	}
 	/** 
 	 * Método para regresar si los objetos son iguales e igualarlos
-	 * @return Regresa si los objetos son iguales
-	 * @return Regresa igualdad de los objetos
+	 * @return Regresa si pertenece a la clase
+	 * @return Regresa si hay igualdad entre el equipment y el objeto ingresado
 	 */
 	@Override
 	public boolean equals(Object o) {
