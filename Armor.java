@@ -9,7 +9,7 @@ public class Armor extends EnduranceObject {
 	private boolean helmet = false;
 	private String name;
 	private Material type;
-	private int l = 0, h = 0;
+	private int l = 1, h = 1;
 	/**
 	 * Método constructor por defecto
 	 */
