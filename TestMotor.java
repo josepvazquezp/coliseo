@@ -51,8 +51,8 @@ public class TestMotor {
 		Role r = new Role();
 		r = Roles.ASSESSIN.getRole();
 		r.setE(e);
-		r.setX(100);
-		r.setY(10);
+		r.setX(42);
+		r.setY(5);
 //		System.out.println(r);
 //		System.out.println();
 //		r.updateAtributes(r.getHp(), 100, 300, e);
@@ -63,8 +63,12 @@ public class TestMotor {
 //		System.out.println(r2.equals(r));
 //		System.out.println(r.hit(10, 10, w, 5, 20));
 		
-//		r.shot(w, 100, 10, 34, 20, 10, 30, 20);
+//		r.shot(w, r, 100, 100, 10, 10, 10, 10, 10);
 		
+//		r.shot(w, r, 100, 30);
+//		r.shot(30, 100);
+//		r.shoot(100, 10);
+		System.out.println(r.shot(30, 100, w, r, 10, 10, 10, 10, Direction.RIGHT));
 		
 	}
 
