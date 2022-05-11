@@ -10,7 +10,9 @@ public class Material {
 	private String name;
 	private int endurance;
 	private static TreeMap<String, Integer> data;
-	
+	/**
+	 * Método constructor static para crear objeto TreeMap
+	 */
 	static {
 		data = new TreeMap<String, Integer>();
 	}
@@ -56,8 +58,8 @@ public class Material {
 		}
 	}
 	/**
-	 * Método para regresar la informacion de material del objeto
-	 * @return Regresa la informacion de material del objeto
+	 * Método para regresar la lista de materiales 
+	 * @return Regresa la lista de materiales
 	 */
 	public TreeMap<String, Integer> getMaterials(){
 		return Material.data;
@@ -85,9 +87,9 @@ public class Material {
 		return String.format("Material: %s    Endurance: %d", this.getName(), this.getEndurance());
 	}
 	/** 
-	 * Método para regresar si los objetos de material son iguales e igualarlos
-	 * @return Regresa si los objetos de material son iguales
-	 * @return Regresa igualdad de los objetos de material
+	 * Método para regresar si los objetos son iguales e igualarlos
+	 * @return Regresa si pertenece a la clase
+	 * @return Regresa si hay igualdad entre el material especifico y el objeto ingresado
 	 */
 	@Override
 	public boolean equals(Object o) {
