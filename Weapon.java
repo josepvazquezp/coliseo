@@ -199,9 +199,9 @@ public class Weapon extends EnduranceObject{
 				             this.getDistance(), this.getEndurance(), this.getCapacity());
 	}
 	/** 
-	 * Método para regresar si los objetos del arma son iguales e igualarlos
-	 * @return Regresa si los objetos del arma son iguales
-	 * @return Regresa igualdad de los objetos del arma
+	 * Método para regresar si los objetos son iguales e igualarlos
+	 * @return Regresa si pertenece a la clase
+	 * @return Regresa si hay igualdad entre el arma y el objeto ingresado
 	 */
 	@Override
 	public boolean equals(Object o) {
