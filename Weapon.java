@@ -28,6 +28,8 @@ public class Weapon extends EnduranceObject{
 	 * @param flyable Volabilidad del objeto del arma
 	 * @param name Nombre del objeto del arma
 	 * @param type Tipo de material del objeto del arma
+	 * @param l Longitud del objeto del arma
+	 * @param h Altura del objeto del arma
 	 */
 	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, String name, Material type, int l, int h) {
 		this.setPow(pow);
@@ -191,23 +193,35 @@ public class Weapon extends EnduranceObject{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	/**
+	 * Establece la longitud del objeto del arma
+	 * @param l longitud que se le asignara al objeto del arma
+	 */
 	@Override
 	public void setLong(int l) {
 		this.l = l;
 		
 	}
-
+	/**
+	 * Método para regresar la longitud del objeto del arma
+	 * @return Regresa la longitud del objeto del arma
+	 */
 	@Override
 	public int getLong() {
 		return this.l;
 	}
-
+	/**
+	 * Establece la altura del objeto del arma
+	 * @param h Altura que se le asignara al objeto de la armadura
+	 */
 	@Override
 	public void setHeight(int h) {
 		this.h = h;
 	}
-
+	/**
+	 * Método para regresar la altura del objeto de la armadura
+	 * @return Regresa la altura del objeto de la armadura
+	 */
 	@Override
 	public int getHeight() {
 		return this.h;
