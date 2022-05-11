@@ -19,8 +19,8 @@ public class Equipment {
 	 * @param weaponR Arma derecha del objeto del equipo
 	 * @param weaponL Arma izquierda del objeto del equipo
 	 * @param armorH Armadura casco del objeto del equipo
-	 * @param armorB 
-	 * @param armorS
+	 * @param armorB Armadura breastplate del objeto del equipo
+	 * @param armorS Armadura shield del objeto del equipo
 	 */
 	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB, Armor armorS) {
 		this.setWeaponL(weaponL);
