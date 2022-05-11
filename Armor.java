@@ -129,5 +129,5 @@ public class Armor extends EnduranceObject {
 	public Armor clone() {
 		return new Armor(this.getDefense(), this.getWeight(), this.isHelmet(), this.getName(), this.getType());
 	}
-	
+
 }
