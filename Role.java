@@ -8,6 +8,7 @@ public class Role {
 	private int powR = 0, powL = 0, hp, x, y, speed, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
 	private Equipment e;
 	public final double GRAVITY = 9.81;
+	private int l = 0, h = 0;
 	/** 
 	 * Método constructor por defecto
 	 */
@@ -22,12 +23,14 @@ public class Role {
 	 * @param baseSpeed Velocidad default del objeto del personaje 
 	 * @param e Objeto tipo equipment del objeto del personaje
 	 */
-	public Role(int hp, int x, int y, int baseSpeed, Equipment e) {
+	public Role(int hp, int x, int y, int baseSpeed, Equipment e, int l, int h) {
 		this.setHp(hp);
 		this.setX(x);
 		this.setY(y);
 		this.setBaseSpeed(baseSpeed);
 		this.setE(e);
+		this.setLong(l);
+		this.setHeight(h);
 	}
 	/**
 	 * Método para regresar el poder del arma derecha del objeto del personaje
@@ -245,15 +248,15 @@ public class Role {
 		}
 	}
 	
-	public boolean hit(int long1, int height1, Weapon weapon, int long2, int height2) {
-		double minXRole = this.getX() - long1 / 2.0;
-		double maxXRole = this.getX() + long1 / 2.0;
-		double minYRole = this.getY() - height1 / 2.0;
-		double maxYRole = this.getY() + height1 / 2.0;
-		double minXWeapon = weapon.getX() - long2 / 2.0;
-		double maxXWeapon = weapon.getX() + long2 / 2.0;
-		double minYWeapon = weapon.getY() - height2 / 2.0;
-		double maxYWeapon = weapon.getY() + height2 / 2.0;
+	public boolean hit(Weapon weapon) {
+		double minXRole = this.getX() - this.l / 2.0;
+		double maxXRole = this.getX() + this.l / 2.0;
+		double minYRole = this.getY() - this.h / 2.0;
+		double maxYRole = this.getY() + this.h / 2.0;
+		double minXWeapon = weapon.getX() - weapon.getLong() / 2.0;
+		double maxXWeapon = weapon.getX() + weapon.getLong() / 2.0;
+		double minYWeapon = weapon.getY() - weapon.getHeight() / 2.0;
+		double maxYWeapon = weapon.getY() + weapon.getHeight() / 2.0;
 		
 		if(((minXWeapon >= minXRole && minXWeapon <= maxXRole) || (maxXWeapon >= minXRole && maxXWeapon <= maxXRole)) && 
 		   ((minYWeapon >= minYRole && minYWeapon <= maxYRole) || (maxYWeapon >= minYRole && maxYWeapon <= maxYRole)))
@@ -262,7 +265,7 @@ public class Role {
 		return false;
 	}
 	
-	public boolean shot(double angle, int v0, Weapon w, Role r, int longR, int heightR, int longW, int heightW, Direction direction) {
+	public boolean shot(double angle, int v0, Weapon w, Role r, Direction direction) {
 		angle *= Math.PI / 180;
 		int x = 0, baseX = w.getX(), baseY = w.getY();
 		double y = 1;
@@ -287,23 +290,44 @@ public class Role {
 			else
 				break;
 			System.out.printf("%d, %d\n", w.getX(), w.getY());
-			if(r.hit(longR, heightR, w, longW, heightW))
+			if(r.hit(w))
 				hit = true;
 		}
 			
 		return hit;
 		
 	}
+	
+	@Override
+	public void setLong(int l) {
+		this.l = l;
+	}
+
+	@Override
+	public int getLong() {
+		return this.l;
+	}
+
+	@Override
+	public void setHeight(int h) {
+		this.h = h;
+	}
+
+	@Override
+	public int getHeight() {
+		return h;
+	}
+	
 	** 
 	 * Método para regresar cadena de texto de los atributos del objeto del personaje
 	 * @return Regresa cadena de texto de los atributos del objeto del personaje
 	 */
 	@Override
 	public String toString() {
-		return String.format("Left Pow: %d\tRight Pow: %d\nHP: %d\tPosition: (%d, %d)\tBaseSpeed:%d \tSpeed: %d\nWeight: %d\tTop defense: %d\t    Mid defense: %d\nEquipment: \n%s", 
+		return String.format("Left Pow: %d\tRight Pow: %d\nHP: %d\tPosition: (%d, %d)\tBaseSpeed:%d \tSpeed: %d\nWeight: %d\tTop defense: %d\t    Mid defense: %d\nEquipment: \n%s\nLong: %d \tHeight: %d", 
 				             this.getPowL(), this.getPowR(), this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(),
 				             this.getSpeed(), this.getTotalWeight(), 
-				             this.getTopDefense(), this.getMidDefense(), this.getE());
+				             this.getTopDefense(), this.getMidDefense(), this.getE(), this.getLong(), this.getHeight());
 	}
 	/** 
 	 * Método para regresar si los objetos son iguales e igualarlos
@@ -317,14 +341,15 @@ public class Role {
 		
 		Role r = (Role) o;
 		return this.getHp() == r.getHp() && this.getX() == r.getX() && this.getY() == r.getY() && 
-			   this.getBaseSpeed() == r.getBaseSpeed() && this.getE().equals(r.getE());
+			   this.getBaseSpeed() == r.getBaseSpeed() && this.getE().equals(r.getE()) &&
+			   this.getLong() == r.getLong() && this.getHeight() == r.getHeight();
 	}
 	/** 
 	 * Método para regresar nuevo objeto del personaje con atributos
 	 * @return Regresa nuevo objeto del personaje con atributos
 	 */
 	public Role clone() {
-		return new Role(this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(), this.getE());
+		return new Role(this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(), this.getE(), this.getLong(), this.getHeight());
 	}
 
 }
