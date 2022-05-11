@@ -3,7 +3,7 @@ package com.iteso.motor;
 public class Role {
 	private int powR = 0, powL = 0, hp, x, y, speed, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
 	private Equipment e;
-	public final double GRAVEDAD = 9.81;
+	public final double GRAVITY = 9.81;
 	
 	public Role() {
 		
@@ -172,32 +172,102 @@ public class Role {
 		return false;
 	}
 	
-	public void shot(Weapon w, Role r, int x, int y, double angle, int longR, int heightR, int longW, int heightW) { //throws InterruptedException{
-		if(x < 0)				// generar sino un exception para todo esto
-			x = 0;
-		if(y < 0)
-			y = 0;
-		if(angle < 0)
-			angle = 0;
-		if(longR < 0)
-			longR = 0;
-		if(heightR < 0)
-			heightR = 0;
-		if(longW < 0)
-			longW = 0;
-		if(heightW < 0)
-			heightW = 0;
+	public boolean shot(double angle, int v0, Weapon w, Role r, int longR, int heightR, int longW, int heightW) {
+		angle *= Math.PI / 180;
+		int x = 0, baseX = w.getX(), baseY = w.getY();
+		double y = 1;
+		double maxX = v0 * v0 * Math.sin(2 * angle) / GRAVITY;
+		System.out.println(maxX);
+		boolean hit = false;
 		
-		double v0x = 10 * Math.cos(angle);
-		double v0y = 10 * Math.sin(angle);
-//		(int) v0x)
-		
-		while(r.hit(longR, heightR, w, longW, heightW) == false || (w.getX() < x && w.getY() > y)) {
-			w.setX(w.getX() + (int) (((int) v0x) * 0.5));
-			w.setY(w.getY() - (int) ((Math.pow(v0y, 0.5)) - (0.5 * GRAVEDAD * Math.pow(0.5, 2.0))));
-			System.out.printf("%d, %d\n", w.getX(), w.getY());
+		while(y >= 0 || r.hit(longR, heightR, w, longW, heightW)) {
+			y = Math.tan(angle) * x - (GRAVITY * x * x) / (2 * v0 * v0 * Math.pow(Math.cos(angle), 2));
+//			System.out.printf("%d, %f\n", x, y);
+			if(y > 0) {
+				w.setX((int) (baseX + x));
+				w.setY((int) (baseY + y));
+			}
+//			System.out.printf("%d, %d\n", w.getX(), w.getY());
+			if(r.hit(longR, heightR, w, longW, heightW))
+				hit = true;
+			x += maxX / 10;
 		}
+			
+		return hit;
+		
 	}
+	
+//	public void shoot(int v0, int angle) {
+//		double v0x = v0 * Math.cos(angle);
+//		double v0y = v0 * Math.sin(angle);
+//		double time = 0;
+//		int x, y = 100000;
+//		int x0 = 0;
+//		int y0 = 0;
+//		
+//		while(y > 0) {
+//			time++;
+//			x = (int) (x0 + v0x * time);
+//			y = (int) (y0 + v0y * time + 1 / 2 * GRAVITY * time * time);
+//			System.out.printf("%d, %d\n", x, y);
+//		}
+//	}
+	
+//	public void shot(int angle, int v0) {
+//		int time = 1;
+//		double x = v0 * Math.cos(angle) * time;
+//		double y = 10000000;
+//		x = v0 * Math.cos(angle) * time;
+//		y = v0 * Math.sin(angle) * time - 1 / 2 * GRAVITY * time * time;
+//		System.out.printf("%f, %f\n", x, y);
+//		while(y > 0) {
+//			time++;
+//			x = v0 * Math.cos(angle) * time;
+//			y = v0 * Math.sin(angle) * time - 1 / 2 * GRAVITY * time * time;
+//			System.out.printf("%f, %f\n", x, y);
+//		}
+//	}
+	
+//	public void shot(Weapon w, Role r, int v0, int angle) {
+//		double ymax = (v0 * v0 * Math.sin(angle) * Math.sin(angle)) / (2 * GRAVITY) ; 
+//		System.out.println(ymax);
+//		int x = 0, y = 100000;
+//
+//		while(y > 0) {
+//		 x += v0;
+//		 y = (int) (Math.tan(angle) * x - GRAVITY / (2 * Math.pow(v0, 2) * Math.pow(Math.cos(angle), 2)) * x * x);
+//		 System.out.printf("%d, %d\n", x, y);
+//		}
+//	}
+	
+//	public void shot(Weapon w, Role r, int x, int y, double angle, int longR, int heightR, int longW, int heightW) { //throws InterruptedException{
+//		if(x < 0)				// generar sino un exception para todo esto
+//			x = 0;
+//		if(y < 0)
+//			y = 0;
+//		if(angle < 0)
+//			angle *= Math.PI / 180;
+//		if(longR < 0)
+//			longR = 0;
+//		if(heightR < 0)
+//			heightR = 0;
+//		if(longW < 0)
+//			longW = 0;
+//		if(heightW < 0)
+//			heightW = 0;
+//		
+//		angle = angle * Math.PI / 180;
+//		
+//		double v0x = 10 * Math.cos(angle);
+//		double v0y = 10 * Math.sin(angle);
+////		(int) v0x)
+//		
+//		while(r.hit(longR, heightR, w, longW, heightW) == false || (w.getX() < x && w.getY() > y)) {
+//			w.setX(w.getX() + (int) (((int) v0x) * 0.5));
+//			w.setY(w.getY() - (int) ((Math.pow(v0y, 0.5)) - (0.5 * GRAVITY * Math.pow(0.5, 2.0))));
+//			System.out.printf("%d, %d\n", w.getX(), w.getY());
+//		}
+//	}
 	
 	@Override
 	public String toString() {
