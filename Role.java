@@ -172,7 +172,7 @@ public class Role {
 		return false;
 	}
 	
-	public boolean shot(double angle, int v0, Weapon w, Role r, int longR, int heightR, int longW, int heightW) {
+	public boolean shot(double angle, int v0, Weapon w, Role r, int longR, int heightR, int longW, int heightW, Direction direction) {
 		angle *= Math.PI / 180;
 		int x = 0, baseX = w.getX(), baseY = w.getY();
 		double y = 1;
@@ -180,17 +180,26 @@ public class Role {
 		System.out.println(maxX);
 		boolean hit = false;
 		
-		while(y >= 0 || r.hit(longR, heightR, w, longW, heightW)) {
+		while(y >= 0 && hit == false) {
+			x += maxX / 100;
 			y = Math.tan(angle) * x - (GRAVITY * x * x) / (2 * v0 * v0 * Math.pow(Math.cos(angle), 2));
-//			System.out.printf("%d, %f\n", x, y);
+			System.out.printf("%d, %f\n", x, y);
 			if(y > 0) {
-				w.setX((int) (baseX + x));
-				w.setY((int) (baseY + y));
+				if(direction == Direction.RIGHT) {
+					w.setX((int) (baseX + x));
+					w.setY((int) (baseY - y));
+				}
+				else if(direction == Direction.LEFT) {
+					w.setX((int) (baseX - x));
+					w.setY((int) (baseY - y));
+				}
 			}
-//			System.out.printf("%d, %d\n", w.getX(), w.getY());
+			else
+				break;
+			System.out.printf("%d, %d\n", w.getX(), w.getY());
 			if(r.hit(longR, heightR, w, longW, heightW))
 				hit = true;
-			x += maxX / 10;
+//			x += maxX / 100;
 		}
 			
 		return hit;
