@@ -16,7 +16,12 @@ public class Equipment {
 	}
 	/**
 	 * Método constructor parametrizado
-	 * @param weaponR
+	 * @param weaponR Arma derecha del objeto del equipo
+	 * @param weaponL Arma izquierda del objeto del equipo
+	 * @param armorH Armadura casco del objeto del equipo
+	 * @param armorB 
+	 * @param armorS
+	 */
 	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB, Armor armorS) {
 		this.setWeaponL(weaponL);
 		this.setWeaponR(weaponR);
@@ -24,18 +29,27 @@ public class Equipment {
 		this.setArmorB(armorB);
 		this.setArmorS(armorS);
 	}
-	
+	/**
+	 * Método para regresar si hay capacidad de arma del objeto
+	 * @return Regresa si hay capacidad de arma del objeto
+	 */
 	private boolean checkCapacity(Weapon weapon) {
 		if(this.weaponCapacity + weapon.getCapacity() < 3)
 			return true;
 		
 		return false;
 	}
-	
+	/**
+	 * Método para regresar arma derecha del objeto
+	 *@return Regresa arma derecha del objeto
+	 */
 	public Weapon getWeaponR() {
 		return this.weaponR;
 	}
-	
+	/**
+	 * Establece el arma derecha o si se excedio el limite del objeto
+	 * @param weaponR Arma derecha que se le asignara al objeto
+	 */
 	public void setWeaponR(Weapon weaponR) {
 		if(weaponR != null) {
 			if(this.checkCapacity(weaponR)) {
@@ -46,11 +60,17 @@ public class Equipment {
 				System.out.println("Weapon selected exceed max capacity");
 		}
 	}
-	
+	/**
+	 * Método para regresar arma izquierda del objeto
+	 * @return Regresa arma izquierda del objeto
+	 */
 	public Weapon getWeaponL() {
 		return this.weaponL;
 	}
-	
+	/**
+	 * Establece el arma izquierda o si se excedio el limite del objeto
+	 * @param weaponL Arma izquierda que se le asignara al objeto
+	 */
 	public void setWeaponL(Weapon weaponL) {
 		if(weaponL != null) {
 			if(this.checkCapacity(weaponL)) {
@@ -61,11 +81,17 @@ public class Equipment {
 				System.out.println("Weapon selected exceed max capacity");
 		}
 	}
-	
+	/**
+	 * Método para regresar Armadura casco del objeto
+	 * @return Regresa Armadura casco del objeto
+	 */
 	public Armor getArmorH() {
 		return this.armorH;
 	}
-	
+	/**
+	 * Establece la armadura casco del objeto
+	 * @param armorH Armadura casco que se le asignara al objeto
+	 */
 	public void setArmorH(Armor armorH) {
 		if(armorH != null && this.armorH == null && armorH.isHelmet())
 			this.armorH = armorH;
@@ -87,11 +113,17 @@ public class Equipment {
 	public void setArmorS(Armor armorS) {
 		this.armorS = armorS;
 	}
-	
+	/**
+	 * Método para regresar la capacidad de armas del objeto
+	 * @return Regresa la capacidad de armas del objeto
+	 */
 	public int getWeaponCapacity() {
 		return this.weaponCapacity;
 	}
-	
+	/** 
+	 * Método para regresar cadena de texto de los atributos del objeto
+	 * @return Regresa cadena de texto de los atributos del objeto
+	 */
 	@Override
 	public String toString() {
 		return String.format("Weapon capacity: %d\n\nLeft Weapon:\n%s\n\nRight  Weapon:\n%s\n\nHelmet:\n%s\n\nBreastplate:\n%s", 
@@ -101,7 +133,11 @@ public class Equipment {
 				              this.getArmorB() == null? "null" : this.getArmorB().toString(),
 				              this.getArmorS() == null? "null" : this.getArmorS().toString());
 	}
-	
+	/** 
+	 * Método para regresar si los objetos son iguales e igualarlos
+	 * @return Regresa si los objetos son iguales
+	 * @return Regresa igualdad de los objetos
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if(!(o instanceof Equipment))
@@ -174,7 +210,10 @@ public class Equipment {
 		return this.getWeaponR().equals(e.getWeaponR()) && this.getWeaponL().equals(e.getWeaponL()) &&
 			   this.getArmorH().equals(e.getArmorH()) && this.getArmorB().equals(e.getArmorB());
 	}
-	
+	/** 
+	 * Método para regresar nuevo objeto con atributos
+	 * @return Regresa nuevo objeto con atributos
+	 */
 	public Equipment clone() {
 		return new Equipment(this.getWeaponR() == null?  null : this.getWeaponR(), 
 							 this.getWeaponL() == null? null : this.getWeaponL(), 
