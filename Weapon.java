@@ -8,8 +8,8 @@ public class Weapon extends EnduranceObject{
 	private int pow, weight, x, y, capacity, distance, endurance;
 	private boolean flyable;
 	private Material type;
-	String name;
-	int l, h;
+	private String name;
+	private int l = 0, h = 0;
 	/**
 	 * Método constructor por defecto
 	 */
