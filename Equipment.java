@@ -1,14 +1,22 @@
 package com.iteso.motor;
-
+/**
+ * Clase Equipment de la aplicación
+ * @author José Pablo Vázquez Partida, Octavio Valdez Fonseca, José Eduardo Pérez Valenzuela
+ * @version 1.0
+ */
 public class Equipment {
 	private Weapon weaponR = null, weaponL = null;
 	private Armor armorH = null, armorB = null, armorS = null;
 	private int weaponCapacity = 0;
-	
+	/** 
+	 * Método constructor por defecto
+	 */
 	public Equipment() {
 		
 	}
-	
+	/**
+	 * Método constructor parametrizado
+	 * @param weaponR
 	public Equipment(Weapon weaponR, Weapon weaponL, Armor armorH, Armor armorB, Armor armorS) {
 		this.setWeaponL(weaponL);
 		this.setWeaponR(weaponR);
