@@ -22,6 +22,8 @@ public class Armor extends EnduranceObject {
 	 * @param helmet Casco del objeto de la armadura
 	 * @param name Nombre del objeto de la armadura
 	 * @param type Tipo de material del objeto de la armadura
+	 * @param l Longitud del objeto de la armadura
+	 * @param h Altura del objeto de la armadura
 	 */
 	public Armor(int defense, int weight, boolean helmet, String name, Material type, int l, int h) {
 		this.setDefense(defense);
@@ -104,22 +106,34 @@ public class Armor extends EnduranceObject {
 	public void setType(Material type) {
 		this.type = type;
 	}
-	
+	/**
+	 * Establece la longitud del objeto de la armadura
+	 * @param l longitud que se le asignara al objeto de la armadura
+	 */
 	@Override
 	public void setLong(int l) {
 		this.l = l;
 	}
-	
+	/**
+	 * Método para regresar la longitud del objeto de la armadura
+	 * @return Regresa la longitud del objeto de la armadura
+	 */
 	@Override
 	public int getLong() {
 		return this.l;
 	}
-
+	/**
+	 * Establece la altura del objeto de la armadura
+	 * @param l Altura que se le asignara al objeto de la armadura
+	 */
 	@Override
 	public void setHeight(int h) {
 		this.h = h;
 	}
-
+	/**
+	 * Método para regresar la altura del objeto de la armadura
+	 * @return Regresa la altura del objeto de la armadura
+	 */
 	@Override
 	public int getHeight() {
 		return this.h;
