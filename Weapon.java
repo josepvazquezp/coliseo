@@ -9,6 +9,7 @@ public class Weapon extends EnduranceObject{
 	private boolean flyable;
 	private Material type;
 	String name;
+	int l, h;
 	/**
 	 * Método constructor por defecto
 	 */
@@ -28,7 +29,7 @@ public class Weapon extends EnduranceObject{
 	 * @param name Nombre del objeto del arma
 	 * @param type Tipo de material del objeto del arma
 	 */
-	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, String name, Material type) {
+	public Weapon(int pow, int weight, int x, int y, int capacity, int distance, int endurance, boolean flyable, String name, Material type, int l, int h) {
 		this.setPow(pow);
 		this.setWeight(weight);
 		this.setX(x);
@@ -39,6 +40,8 @@ public class Weapon extends EnduranceObject{
 		this.setFlyable(flyable);
 		this.setType(type);
 		this.setName(name);
+		this.setLong(l);
+		this.setHeight(h);
 	}
 	/**
 	 * Método para disminuir la resistencia del objeto del arma
@@ -188,15 +191,36 @@ public class Weapon extends EnduranceObject{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public void setLong(int l) {
+		this.l = l;
+		
+	}
+
+	@Override
+	public int getLong() {
+		return this.l;
+	}
+
+	@Override
+	public void setHeight(int h) {
+		this.h = h;
+	}
+
+	@Override
+	public int getHeight() {
+		return this.h;
+	}
 	/** 
 	 * Método para regresar cadena de texto de los atributos del objeto del arma
 	 * @return Regresa cadena de texto de los atributos del objeto del arma
 	 */
 	@Override
 	public String toString() {
-		return String.format("Weapon: %s \tType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d", 
+		return String.format("Weapon: %s \tType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d\nLong: %d \tHeight: %d", 
 				             this.getName(), this.getType().toString(), this.isFlyable(), this.getPow(), this.getWeight(),
-				             this.getDistance(), this.getEndurance(), this.getCapacity());
+				             this.getDistance(), this.getEndurance(), this.getCapacity(), this.getLong(), this.getHeight());
 	}
 	/** 
 	 * Método para regresar si los objetos son iguales e igualarlos
@@ -212,7 +236,8 @@ public class Weapon extends EnduranceObject{
 		return this.getPow() == w.getPow() && this.getWeight() == w.getWeight() && 
 			   this.getDistance() == w.getDistance() && this.getEndurance() == w.getEndurance() &&
 			   this.getCapacity() == w.getCapacity() && this.isFlyable() == w.isFlyable() &&
-			   this.getName().equals(w.getName()) && this.getType().equals(w.getType());
+			   this.getName().equals(w.getName()) && this.getType().equals(w.getType()) &&
+			   this.getLong() == w.getLong() && this.getHeight() == w.getHeight();
 	}
 	/** 
 	 * Método para regresar nuevo objeto del arma con atributos
@@ -220,6 +245,7 @@ public class Weapon extends EnduranceObject{
 	 */
 	public Weapon clone() {
 		return new Weapon(this.getPow(), this.getWeight(), this.getX(), this.getY(), this.getCapacity(), 
-				          this.getDistance(), this.getEndurance(), this.isFlyable(), this.getName(), this.getType());
+				          this.getDistance(), this.getEndurance(), this.isFlyable(), this.getName(), this.getType(),
+				          this.getLong(), this.getHeight());
 	}
 }
