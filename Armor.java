@@ -9,6 +9,7 @@ public class Armor extends EnduranceObject {
 	private boolean helmet = false;
 	private String name;
 	private Material type;
+	private int l, h;
 	/**
 	 * Método constructor por defecto
 	 */
@@ -22,12 +23,14 @@ public class Armor extends EnduranceObject {
 	 * @param name Nombre del objeto de la armadura
 	 * @param type Tipo de material del objeto de la armadura
 	 */
-	public Armor(int defense, int weight, boolean helmet, String name, Material type) {
+	public Armor(int defense, int weight, boolean helmet, String name, Material type, int l, int h) {
 		this.setDefense(defense);
 		this.setWeight(weight);
 		this.setHelmet(helmet);
 		this.setName(name);
 		this.setType(type);
+		this.setLong(l);
+		this.setHeight(h);
 	}
 	/**
 	 * Método para disminuir la defensa
@@ -101,14 +104,35 @@ public class Armor extends EnduranceObject {
 	public void setType(Material type) {
 		this.type = type;
 	}
+	
+	@Override
+	public void setLong(int l) {
+		this.l = l;
+	}
+	
+	@Override
+	public int getLong() {
+		return this.l;
+	}
+
+	@Override
+	public void setHeight(int h) {
+		this.h = h;
+	}
+
+	@Override
+	public int getHeight() {
+		return this.h;
+	}
+	
 	/** Método para regresar cadena de texto de los atributos del objeto
 	 * @return Regresa cadena de texto de los atributos del objeto
 	 */
 	@Override
 	public String toString() {
-		return String.format("Armor: %s \tType: [%s]\nDefense: %d \tWeight: %d \tHelmet: %b", 
+		return String.format("Armor: %s \tType: [%s]\nDefense: %d \tWeight: %d \tHelmet: %b\nLong: %d \tHeight: %d", 
 				             this.getName(), this.getType().toString(), this.getDefense(), 
-				             this.getWeight(), this.isHelmet());
+				             this.getWeight(), this.isHelmet(), this.getLong(), this.getHeight());
 	}
 	/** Método para regresar si los objetos son iguales e igualarlos
 	 * @return Regresa si los objetos son iguales
@@ -121,13 +145,16 @@ public class Armor extends EnduranceObject {
 		
 		Armor a = (Armor) o;
 		return this.getDefense() == a.getDefense() && this.getWeight() == a.getWeight() && 
-			   this.isHelmet() == a.isHelmet() && this.getName().equals(a.getName()) && this.getType().equals(a.getType());
+			   this.isHelmet() == a.isHelmet() && this.getName().equals(a.getName()) && 
+			   this.getType().equals(a.getType()) && this.getLong() == a.getLong() && 
+			   this.getHeight() == a.getHeight();
 	}
 	/** Método para regresar nuevo objeto con atributos
 	 * @return Regresa nuevo objeto con atributos
 	 */
 	public Armor clone() {
-		return new Armor(this.getDefense(), this.getWeight(), this.isHelmet(), this.getName(), this.getType());
+		return new Armor(this.getDefense(), this.getWeight(), this.isHelmet(), this.getName(), this.getType(),
+				         this.getLong(), this.getHeight());
 	}
 
 }
