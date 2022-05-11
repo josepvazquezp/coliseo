@@ -9,7 +9,7 @@ public interface Hitbox {
 	int h = 0;
 	/**
 	 * Establece la longitud
-	 * @param l longitud que se asigna
+	 * @param l Longitud que se asigna
 	 */
 	void setLong(int l);
 	/**
@@ -17,12 +17,12 @@ public interface Hitbox {
 	 */
 	int getLong();
 	/**
-	 * Establece el ancho
-	 * @param h ancho que se asigna
+	 * Establece la altura
+	 * @param h Altura que se asigna
 	 */
 	void setHeight(int h);
 	/**
-	 * Método para regresar un entero  del ancho donde se implementa la interfaz
+	 * Método para regresar un entero de la altura donde se implementa la interfaz
 	 */
 	int getHeight();
 	
