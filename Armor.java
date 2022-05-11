@@ -124,7 +124,7 @@ public class Armor extends EnduranceObject {
 	}
 	/**
 	 * Establece la altura del objeto de la armadura
-	 * @param l Altura que se le asignara al objeto de la armadura
+	 * @param h Altura que se le asignara al objeto de la armadura
 	 */
 	@Override
 	public void setHeight(int h) {
