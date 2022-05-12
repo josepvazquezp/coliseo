@@ -3,7 +3,7 @@ package com.iteso.motor;
 import java.util.TreeMap;
 
 /**
- * Clase Armor de la aplicación
+ * Clase Material de la aplicación
  * @author José Pablo Vázquez Partida, Octavio Valdez Fonseca, José Eduardo Pérez Valenzuela
  * @version 1.0
  */
