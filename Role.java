@@ -1,20 +1,23 @@
 package com.iteso.motor;
+
 /**
  * Clase Role de la aplicación
  * @author José Pablo Vázquez Partida, Octavio Valdez Fonseca, José Eduardo Pérez Valenzuela
  * @version 1.0
  */
-public class Role {
+public class Role implements Hitbox{
 	private int powR = 0, powL = 0, hp, x, y, speed, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
 	private Equipment e;
 	public final double GRAVITY = 9.81;
-	private int l = 0, h = 0;
+	private int l = 1, h = 1;
+	
 	/** 
 	 * Método constructor por defecto
 	 */
 	public Role() {
 		
 	}
+	
 	/**
 	 * Método constructor parametrizado
 	 * @param hp Hit points del objeto del personaje
@@ -22,8 +25,10 @@ public class Role {
 	 * @param y Posicion y del objeto del personaje
 	 * @param baseSpeed Velocidad default del objeto del personaje 
 	 * @param e Objeto tipo equipment del objeto del personaje
+	 * @param l Longitud del objeto del objeto del personaje
+	 * @param h Altura del objeto del objeto del personaje 
 	 */
-	public Role(int hp, int x, int y, int baseSpeed, Equipment e, int l, int h) {
+	public Role(int hp, int x, int y, int baseSpeed, Equipment e, int l, int h) {	
 		this.setHp(hp);
 		this.setX(x);
 		this.setY(y);
@@ -32,6 +37,7 @@ public class Role {
 		this.setLong(l);
 		this.setHeight(h);
 	}
+	
 	/**
 	 * Método para regresar el poder del arma derecha del objeto del personaje
 	 *@return Regresa el poder del arma derecha del objeto del personaje
@@ -39,27 +45,37 @@ public class Role {
 	public int getPowR() {
 		return this.powR;
 	}
+	
 	/**
 	 * Establece el poder del arma derecha del objeto del personaje
 	 * @param powR Poder del arma derecha que se le asignara al objeto del personaje
 	 */
-	private void setPowR(int powR) {
+	private void setPowR(int powR) throws NegativeNumberFound {
+		if(powR < 0)
+			throw new NegativeNumberFound(powR);
+		
 		this.powR = powR;
 	}
+	
 	/**
-	 * Método para regresar el poder del arma izquierda del objeto del personaje
-	 *@return Regresa el poder del arma izquierda del objeto del personaje
+	 * Establece el poder del arma derecha del objeto del personaje
+	 * @param powR Poder del arma derecha que se le asignara al objeto del personaje
 	 */
 	public int getPowL() {
 		return this.powL;
 	}
+	
 	/**
 	 * Establece el poder del arma izquierda del objeto del personaje
-	 * @param powR Poder del arma izquierda que se le asignara al objeto del personaje
+	 * @param powL Poder del arma izquierda que se le asignara al objeto del personaje
 	 */
-	private void setPowL(int powL) {
+	private void setPowL(int powL) throws NegativeNumberFound {
+		if(powL < 0)
+			throw new NegativeNumberFound(powL);
+		
 		this.powL = powL;
 	}
+	
 	/**
 	 * Método para regresar los Hit Points del objeto del personaje
 	 *@return Regresa los Hit Points del objeto del personaje
@@ -67,13 +83,18 @@ public class Role {
 	public int getHp() {
 		return this.hp;
 	}
+	
 	/**
 	 * Establece los Hit Points del objeto del personaje
 	 * @param hp Hit Points que se le asignara al objeto del personaje
 	 */
-	public void setHp(int hp) {
+	public void setHp(int hp) throws NegativeNumberFound {
+		if(hp < 0)
+			throw new NegativeNumberFound(hp);
+		
 		this.hp = hp;
 	}
+	
 	/**
 	 * Método para regresar la Posicion x del objeto del personaje
 	 *@return Regresa la Posicion x del objeto del personaje
@@ -81,6 +102,7 @@ public class Role {
 	public int getX() {
 		return this.x;
 	}
+	
 	/**
 	 * Establece la Posicion x del objeto del personaje
 	 * @param x Posicion x que se le asignara al objeto del personaje
@@ -88,6 +110,7 @@ public class Role {
 	public void setX(int x) {
 		this.x = x;
 	}
+	
 	/**
 	 * Método para regresar la Posicion y del objeto del personaje
 	 *@return Regresa la Posicion y del objeto del personaje
@@ -95,6 +118,7 @@ public class Role {
 	public int getY() {
 		return this.y;
 	}
+	
 	/**
 	 * Establece la Posicion y del objeto del personaje
 	 * @param x Posicion y que se le asignara al objeto del personaje
@@ -102,6 +126,7 @@ public class Role {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
 	/**
 	 * Método para regresar la Velocidad del objeto del personaje
 	 *@return Regresa la Velocidad del objeto del personaje
@@ -109,12 +134,19 @@ public class Role {
 	private int getSpeed() {
 		return this.speed;
 	}
+	
 	/**
 	 * Establece la Velocidad del objeto del personaje
 	 */
 	private void setSpeed() {
-		this.speed = this.getBaseSpeed() - this.getTotalWeight();
+		int temp = this.getBaseSpeed() - this.getTotalWeight();
+		
+		if(temp < 0)
+			temp = 0;
+		
+		this.speed = temp;
 	}
+	
 	/**
 	 * Método para regresar la Defensa superior del objeto del personaje
 	 *@return Regresa la Defensa superior del objeto del personaje
@@ -122,13 +154,18 @@ public class Role {
 	public int getTopDefense() {
 		return this.topDefense;
 	}
+	
 	/**
 	 * Establece la Defensa superior del objeto del personaje
 	 * @param topDefense Defensa superior que se le asignara al objeto del personaje
 	 */
 	private void setTopDefense(int topDefense) {
+		if(topDefense < 0)
+			topDefense = 0;
+		
 		this.topDefense = topDefense;
 	}
+	
 	/**
 	 * Método para regresar la Defensa del torso del objeto del personaje
 	 *@return Regresa la Defensa del torso del objeto del personaje
@@ -136,13 +173,18 @@ public class Role {
 	public int getMidDefense() {
 		return this.midDefense;
 	}
+	
 	/**
 	 * Establece la Defensa del torso del objeto del personaje
 	 * @param midDefense Defensa del torso que se le asignara al objeto del personaje
 	 */
 	private void setMidDefense(int midDefense) {
+		if(midDefense < 0)
+			midDefense = 0;
+		
 		this.midDefense = midDefense;
 	}
+	
 	/**
 	 * Método para regresar el Equipo del objeto del personaje
 	 *@return Regresa el Equipo del objeto del personaje
@@ -150,6 +192,7 @@ public class Role {
 	public Equipment getE() {
 		return this.e;
 	}
+	
 	/**
 	 * Establece el Equipo del objeto del personaje
 	 * @param equipment Equipo que se le asignara al objeto del personaje
@@ -158,6 +201,7 @@ public class Role {
 		this.e = equipment;				
 		this.setTotalWeight_Pows_Defenses(equipment);
 	}
+	
 	/**
 	 * Método para regresar el Peso total del objeto del personaje
 	 *@return Regresa el Peso total del objeto del personaje
@@ -165,6 +209,7 @@ public class Role {
 	public int getTotalWeight() {
 		return this.totalWeight;
 	}
+
 	/**
 	 * Método para regresar la Velocidad default del objeto del personaje
 	 *@return Regresa la Velocidad default del objeto del personaje
@@ -172,13 +217,18 @@ public class Role {
 	public int getBaseSpeed() {
 		return this.baseSpeed;
 	}
+
 	/**
 	 * Establece la Velocidad default del objeto del personaje
 	 * @param baseSpeed Velocidad default que se le asignara al objeto del personaje
 	 */
-	public void setBaseSpeed(int baseSpeed) {
+	public void setBaseSpeed(int baseSpeed) throws NegativeNumberFound {
+		if(baseSpeed < 0)
+			throw new NegativeNumberFound(baseSpeed);
+		
 		this.baseSpeed = baseSpeed;
 	}
+
 	/**
 	 * Establece el Peso total, el poder derecha, izquierda y las defensas del objeto del personaje
 	 * @param equipment Peso total, el poder derecha, izquierda y las defensas que se le asignaran al objeto del personaje
@@ -213,6 +263,7 @@ public class Role {
 		
 		this.setSpeed();
 	}
+
 	/**
 	 * Actualiza los Hit points, la posicion x, la posicion y y el equipo del objeto del personaje
 	 * @param hp Hit Points que se le asignara al objeto del personaje
@@ -226,6 +277,7 @@ public class Role {
 		this.setY(y);
 		this.setTotalWeight_Pows_Defenses(equipment);
 	}
+	
 	/**
 	 * Establece la direccion de movilidad del objeto del personaje y si esta dentro del rango
 	 * @param toSum Valor a incrementar segun su direccion que se le asignara al objeto del personaje
@@ -233,7 +285,10 @@ public class Role {
 	 * @param y Posicion y que se le asignara al objeto del personaje
 	 * @param equipment Peso total, el poder derecha, izquierda y las defensas que se le asignaran al objeto del personaje
 	 */
-	public void move(int toSum, Direction direction) {
+	public void move(int toSum, Direction direction) throws NegativeNumberFound {
+		if(toSum < 0)
+			throw new NegativeNumberFound(toSum);
+		
 		if(direction == Direction.UP)
 			this.y -= toSum;
 		else if(direction == Direction.DOWN)
@@ -247,6 +302,7 @@ public class Role {
 			System.out.println("Role out of bounds");
 		}
 	}
+	
 	
 	public boolean hit(Weapon weapon) {
 		double minXRole = this.getX() - this.l / 2.0;
@@ -265,7 +321,12 @@ public class Role {
 		return false;
 	}
 	
-	public boolean shot(double angle, int v0, Weapon w, Role r, Direction direction) {
+	public boolean shot(double angle, int v0, Weapon w, Role r, Direction direction) throws NegativeNumberFound {
+		if(angle < 0)
+			throw new NegativeNumberFound(angle);
+		if(v0 < 0)
+			throw new NegativeNumberFound(v0);
+		
 		angle *= Math.PI / 180;
 		int x = 0, baseX = w.getX(), baseY = w.getY();
 		double y = 1;
@@ -299,7 +360,10 @@ public class Role {
 	}
 	
 	@Override
-	public void setLong(int l) {
+	public void setLong(int l) throws NegativeNumberFound {
+		if(l < 0)
+			throw new NegativeNumberFound(l);
+		
 		this.l = l;
 	}
 
@@ -309,7 +373,10 @@ public class Role {
 	}
 
 	@Override
-	public void setHeight(int h) {
+	public void setHeight(int h) throws NegativeNumberFound {
+		if(h < 0)
+			throw new NegativeNumberFound(h);
+		
 		this.h = h;
 	}
 
@@ -318,7 +385,7 @@ public class Role {
 		return h;
 	}
 	
-	** 
+	/** 
 	 * Método para regresar cadena de texto de los atributos del objeto del personaje
 	 * @return Regresa cadena de texto de los atributos del objeto del personaje
 	 */
@@ -329,6 +396,7 @@ public class Role {
 				             this.getSpeed(), this.getTotalWeight(), 
 				             this.getTopDefense(), this.getMidDefense(), this.getE(), this.getLong(), this.getHeight());
 	}
+	
 	/** 
 	 * Método para regresar si los objetos son iguales e igualarlos
 	 * @return Regresa si pertenece a la clase
@@ -344,10 +412,12 @@ public class Role {
 			   this.getBaseSpeed() == r.getBaseSpeed() && this.getE().equals(r.getE()) &&
 			   this.getLong() == r.getLong() && this.getHeight() == r.getHeight();
 	}
+	
 	/** 
 	 * Método para regresar nuevo objeto del personaje con atributos
 	 * @return Regresa nuevo objeto del personaje con atributos
 	 */
+	@Override
 	public Role clone() {
 		return new Role(this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(), this.getE(), this.getLong(), this.getHeight());
 	}

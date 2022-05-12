@@ -1,4 +1,5 @@
 package com.iteso.motor;
+
 /**
  * Clase Enum Direction de la aplicación
  * @author José Pablo Vázquez Partida, Octavio Valdez Fonseca, José Eduardo Pérez Valenzuela
