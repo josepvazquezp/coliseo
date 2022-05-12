@@ -328,7 +328,7 @@ public class Role implements Hitbox{
 	/**
 	 * Método para calcular el tiro parabolico segun la direccion que se le de y regresar hit
 	 * @param angle Valor a utilizar para calcular el angulo del tiro parabolico
-	 * @param v0 Valor a utilizar para calcular la velocidad del tiro parabolico
+	 * @param v0 Velocidad inicial a utilizar para calcular la longitud de la parabola con el respectivo angulo
 	 * @param w Arma a utilizar para calcular la direccion del angulo del tiro parabolico
 	 * @param r Personaje a utilizar para calcular si le dieron
 	 * @param direction Direccion a utilizar para calcular la posicion del arma
