@@ -303,7 +303,12 @@ public class Role implements Hitbox{
 		}
 	}
 	
-	
+	/**
+	 * Método para regresar si el arma le dio al objeto del personaje
+	 * @param weapon Arma a utilizar para calcular si efectuo un tiro y asignarlo al objeto del personaje
+	 * @return Regresa que el arma le dio al objeto del personaje
+	 * @return Regresa que el arma no le dio al objeto del personaje
+	 */
 	public boolean hit(Weapon weapon) {
 		double minXRole = this.getX() - this.l / 2.0;
 		double maxXRole = this.getX() + this.l / 2.0;
@@ -320,7 +325,15 @@ public class Role implements Hitbox{
 		
 		return false;
 	}
-	
+	/**
+	 * Método para calcular el tiro parabolico segun la direccion que se le de y regresar hit
+	 * @param angle Valor a utilizar para calcular el angulo del tiro parabolico
+	 * @param v0 Valor a utilizar para calcular la velocidad del tiro parabolico
+	 * @param w Arma a utilizar para calcular la direccion del angulo del tiro parabolico
+	 * @param r Personaje a utilizar para calcular si le dieron
+	 * @param direction Direccion a utilizar para calcular la posicion del arma
+	 * @return Regresa metodo hit
+	 */
 	public boolean shot(double angle, int v0, Weapon w, Role r, Direction direction) throws NegativeNumberFound {
 		if(angle < 0)
 			throw new NegativeNumberFound(angle);
@@ -358,7 +371,10 @@ public class Role implements Hitbox{
 		return hit;
 		
 	}
-	
+	/**
+	 * Establece la longitud del objeto del personaje
+	 * @param l longitud que se le asignara al objeto del personaje
+	 */
 	@Override
 	public void setLong(int l) throws NegativeNumberFound {
 		if(l < 0)
@@ -366,12 +382,18 @@ public class Role implements Hitbox{
 		
 		this.l = l;
 	}
-
+	/**
+	 * Método para regresar la longitud del objeto del personaje
+	 * @return Regresa la longitud del objeto del personaje
+	 */
 	@Override
 	public int getLong() {
 		return this.l;
 	}
-
+	/**
+	 * Establece la altura del objeto del personaje
+	 * @param h Altura que se le asignara al objeto del pesonaje
+	 */
 	@Override
 	public void setHeight(int h) throws NegativeNumberFound {
 		if(h < 0)
@@ -379,7 +401,10 @@ public class Role implements Hitbox{
 		
 		this.h = h;
 	}
-
+	/**
+	 * Método para regresar la altura del objeto del arma
+	 * @return Regresa la altura del objeto del arma
+	 */
 	@Override
 	public int getHeight() {
 		return h;
