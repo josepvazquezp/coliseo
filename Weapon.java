@@ -258,7 +258,7 @@ public class Weapon extends EnduranceObject implements Hitbox {
 
 	/**
 	 * Establece la altura del objeto del arma
-	 * @param h Altura que se le asignara al objeto de la armadura
+	 * @param h Altura que se le asignara al objeto del arma
 	 */
 	@Override
 	public void setHeight(int h) throws NegativeNumberFound {
@@ -269,8 +269,8 @@ public class Weapon extends EnduranceObject implements Hitbox {
 	}
 
 	/**
-	 * Método para regresar la altura del objeto de la armadura
-	 * @return Regresa la altura del objeto de la armadura
+	 * Método para regresar la altura del objeto del arma
+	 * @return Regresa la altura del objeto del arma
 	 */
 	@Override
 	public int getHeight() {
