@@ -77,7 +77,8 @@ public class Armor extends EnduranceObject implements Hitbox{
 		return this.weight;
 	}
 
-	/** Establece el peso del bojeto
+	/** 
+	 * Establece el peso del bojeto
 	 * @param weight Peso que se le asignara al objeto
 	 */
 	public void setWeight(int weight) throws NegativeNumberFound {
@@ -87,42 +88,48 @@ public class Armor extends EnduranceObject implements Hitbox{
 		this.weight = weight;
 	}
 
-	/** Método para regresar el casco del objeto
+	/** 
+	 * Método para regresar el casco del objeto
 	 * @return Regresa el casco del objeto
 	 */
 	public boolean isHelmet() {
 		return this.helmet;
 	}
 
-	/** Establece el casco del objeto
+	/** 
+	 * Establece el casco del objeto
 	 * @param helmet Casco que se le asignara al objeto
 	 */
 	public void setHelmet(boolean helmet) {
 		this.helmet = helmet;
 	}
 
-	/** Método para regresar el nombre del objeto
+	/** 
+	 * Método para regresar el nombre del objeto
 	 * @return Regresa el nombre del objeto
 	 */
 	public String getName() {
 		return this.name;
 	}
 
-	/** Establece el nombre del objeto
+	/** 
+	 * Establece el nombre del objeto
 	 * @param name Nombre que se le asignara al objeto
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/** Método para regresar el tipo de material del objeto
+	/** 
+	 * Método para regresar el tipo de material del objeto
 	 * @return Regresa el tipo de material del bojeto
 	 */
 	public Material getType() {
 		return this.type;
 	}
 
-	/** Establece el tipo de material del objeto
+	/** 
+	 * Establece el tipo de material del objeto
 	 * @param type Tipo de material que se le asignara al objeto
 	 */
 	public void setType(Material type) {
@@ -172,7 +179,8 @@ public class Armor extends EnduranceObject implements Hitbox{
 	}
 	
 
-	/** Método para regresar cadena de texto de los atributos del objeto
+	/** 
+	 * Método para regresar cadena de texto de los atributos del objeto
 	 * @return Regresa cadena de texto de los atributos del objeto
 	 */
 	@Override
@@ -182,7 +190,8 @@ public class Armor extends EnduranceObject implements Hitbox{
 				             this.getWeight(), this.isHelmet(), this.getLong(), this.getHeight());
 	}
 	
-	/** Método para regresar si los objetos son iguales e igualarlos
+	/** 
+	 * Método para regresar si los objetos son iguales e igualarlos
 	 * @return Regresa si los objetos son iguales
 	 * @return Regresa igualdad de los objetos
 	 */
@@ -198,7 +207,8 @@ public class Armor extends EnduranceObject implements Hitbox{
 			   this.getHeight() == a.getHeight();
 	}
 	
-	/** Método para regresar nuevo objeto con atributos
+	/** 
+	 * Método para regresar nuevo objeto con atributos
 	 * @return Regresa nuevo objeto con atributos
 	 */
 	@Override
