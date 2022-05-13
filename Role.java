@@ -282,36 +282,36 @@ public class Role implements Hitbox{
 	 * Establece la direccion de movilidad del objeto del personaje y si esta dentro del rango
 	 * @param toSum Valor a incrementar segun su direccion que se le asignara al objeto del personaje
 	 * @param direction Direccion de movilidad que se le asignara al objeto del personaje
+	 * @param x Posicion x que se le asignara al objeto del personaje
 	 * @param y Posicion y que se le asignara al objeto del personaje
-	 * @param equipment Peso total, el poder derecha, izquierda y las defensas que se le asignaran al objeto del personaje
 	 */
 	public void move(int toSum, Direction direction) throws NegativeNumberFound {
 		if(toSum < 0)
 			throw new NegativeNumberFound(toSum);
 		
 		if(direction == Direction.UP)
-			this.y -= toSum;
+			this.setY(this.y -= toSum);
 		else if(direction == Direction.DOWN)
-			this.y += toSum;
+			this.setY(this.y += toSum);
 		else if(direction == Direction.RIGHT)
-			this.x += toSum;
+			this.setX(this.x += toSum);
 		else if(direction == Direction.LEFT)
-			this.x -= toSum;
+			this.setX(this.x -= toSum);
 		else if(direction == Direction.UP_RIGHT) {
-			this.x += toSum;
-			this.y -= toSum;
+			this.setX(this.x += toSum);
+			this.setY(this.y -= toSum);
 		}
 		else if(direction == Direction.UP_LEFT) {
-			this.x -= toSum;
-			this.y -= toSum;
+			this.setX(this.x -= toSum);
+			this.setY(this.y -= toSum);
 		}
 		else if(direction == Direction.DOWN_RIGHT) {
-			this.x += toSum;
-			this.y += toSum;
+			this.setX(this.x += toSum);
+			this.setY(this.y += toSum);
 		}
 		else if(direction == Direction.DOWN_LEFT) {
-			this.x -= toSum;
-			this.y += toSum;
+			this.setX(this.x -= toSum);
+			this.setY(this.y += toSum);
 		}
 		
 		if(this.getX() < 0 | this.getY() < 0) {
