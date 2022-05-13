@@ -12,7 +12,7 @@ public enum Armors {
 	IRON_BREASTPLATE(200, 80, false, "gold breastplate", Materials.IRON.getMaterial(), 100, 50), 
 	COPPER_BREASTPLATE(100, 60, false, "gold breastplate", Materials.COPPER.getMaterial(), 100, 50),
 
-	IRON_SHIELD(100, 20, false, "shield", Materials.IRON.getMaterial(), 100, 100);
+	IRON_SHIELD(100, 20, false, "shield", Materials.IRON.getMaterial(), 80, 60);
 	
 	private Armor armor = new Armor();
 	
