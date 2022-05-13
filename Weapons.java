@@ -24,7 +24,7 @@ public enum Weapons{
 	IRON_KUNAI(10, 5, 1, 1, 0, 0, 150,true, "Iron Kunai", Materials.IRON.getMaterial(), 20, 10),
 	GOLD_KUNAI(13, 7, 1, 1, 0, 0, 200,true,"Gold Kunai", Materials.GOLD.getMaterial(), 20, 10),
 	
-	IRON_SHIELD(15, 20, 1, 1, 0, 0, 150,true,"Iron Shield", Materials.IRON.getMaterial(), 100, 100),
+	IRON_SHIELD(15, 20, 1, 1, 0, 0, 150,true,"Iron Shield", Materials.IRON.getMaterial(), 80, 60),
 	
 	FIST(10, 0, 1, 1, 0, 0, 100, false,"Fist", Materials.FLESH.getMaterial(), 10, 10);
 	
