@@ -2,17 +2,18 @@ package proyecto;
 
 import com.iteso.motor.Direction;
 import com.iteso.motor.Role;
+import com.iteso.motor.Weapon;
 
 public class RoleColiseo extends Role {
 	
-	public static final int MAP_SPACE, DIF_TO_HEAD, L_HEAD, H_HEAD;
+	public static final int DIF_TO_HEAD, L_HEAD, H_HEAD, V0;
 	Role head;
 	
-	static {
-		MAP_SPACE = 10;			// por acordar según las dimensiones necesarias
+	static {			// por acordar según las dimensiones necesarias
 		DIF_TO_HEAD = 10;
 		L_HEAD = 10;
 		H_HEAD = 10;
+		V0 = 100;
 	}
 	
 	public RoleColiseo() {
@@ -80,74 +81,74 @@ public class RoleColiseo extends Role {
 		
 		if(dAttack == Direction.UP) {
 			  if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 			  else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.DOWN) {
 			  if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 			  else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.RIGHT) {
 			  if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX + distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX + distance * ArenaMap.MAP_SPACE);
 			  }
 			  else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX + distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX + distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.LEFT) {
 			if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX - distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX - distance * ArenaMap.MAP_SPACE);
 			  }
 			else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX - distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX - distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.UP_RIGHT) {
 			if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX + distance * MAP_SPACE);
-				  super.getE().getWeaponL().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX + distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 			else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX + distance * MAP_SPACE);
-				  super.getE().getWeaponR().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX + distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.UP_LEFT) {
 			if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX - distance * MAP_SPACE);
-				  super.getE().getWeaponL().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX - distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 			else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX - distance * MAP_SPACE);
-				  super.getE().getWeaponR().setY(tempY - distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX - distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY - distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.DOWN_RIGHT) {
 			if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX + distance * MAP_SPACE);
-				  super.getE().getWeaponL().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX + distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 			else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX + distance * MAP_SPACE);
-				  super.getE().getWeaponR().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX + distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		else if(dAttack == Direction.UP_LEFT) {
 			if(dWeapon == Direction.LEFT) {
-				  super.getE().getWeaponL().setX(tempX - distance * MAP_SPACE);
-				  super.getE().getWeaponL().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponL().setX(tempX - distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponL().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 			else if(dWeapon == Direction.RIGHT) {
-				  super.getE().getWeaponR().setX(tempX - distance * MAP_SPACE);
-				  super.getE().getWeaponR().setY(tempY + distance * MAP_SPACE);
+				  super.getE().getWeaponR().setX(tempX - distance * ArenaMap.MAP_SPACE);
+				  super.getE().getWeaponR().setY(tempY + distance * ArenaMap.MAP_SPACE);
 			  }
 		}
 		
@@ -190,13 +191,15 @@ public class RoleColiseo extends Role {
 			  super.getE().getWeaponR().setX(tempX);
 			  super.getE().getWeaponR().setY(tempY);
 		  }
+		  
+		  super.updateAtributes(super.getHp(), super.getX(), super.getY(), super.getE());
 	}
 	
 	public void jump(boolean before) {
 		if(before)
-			super.move(MAP_SPACE, Direction.UP);
+			super.move(ArenaMap.MAP_SPACE, Direction.UP);
 		else
-			super.move(MAP_SPACE, Direction.DOWN);
+			super.move(ArenaMap.MAP_SPACE, Direction.DOWN);
 	}
 	
 	public void includeShield() {
@@ -208,11 +211,47 @@ public class RoleColiseo extends Role {
 				super.getE().getArmorS().setDefense(super.getE().getArmorS().getDefense() * 2);
 				super.getE().getArmorS().setWeight(super.getE().getArmorS().getWeight() * 2);
 			}
+			
+			super.updateAtributes(super.getHp(), super.getX(), super.getY(), super.getE());
 		}
 	}
 	
-	public void fling(Direction direction) {
-		// hasta que quede el shot del motor físico
+	public boolean shot(int x, int y, RoleColiseo r, Direction wDir, Direction dShot) {
+		double angle = Math.asin(x * Role.GRAVITY / (V0 * V0));
+		Weapon temp = wDir == Direction.RIGHT? super.getE().getWeaponR().clone() : super.getE().getWeaponL().clone();
+		
+		if(super.shot(angle, V0, r, wDir, dShot)) {
+			if(r.getHead().hit(temp)) {
+				r.setHp(r.getHp() - this.damage(r, wDir, true));
+				   
+				   if(r.getTopDefense() != 0)
+					   r.getE().getArmorH().decrease();
+				   
+			}
+			else {
+				  r.setHp(r.getHp() - this.damage(r, wDir, false));
+				  
+				  if(r.getMidDefense() != 0)
+					  r.getE().getArmorB().decrease();
+			 }
+			
+			if(wDir == Direction.RIGHT)
+				super.getE().setWeaponR(null);
+			else
+				super.getE().setWeaponL(null);
+			
+			return true;
+		}
+		
+		if(wDir == Direction.RIGHT)
+			super.getE().setWeaponR(null);
+		else
+			super.getE().setWeaponL(null);
+		
+		super.updateAtributes(super.getHp(), super.getX(), super.getY(), super.getE());
+		r.updateAtributes(r.getHp(), r.getX(), r.getY(), r.getE());
+		
+		return false;
 	}
 	
 }
