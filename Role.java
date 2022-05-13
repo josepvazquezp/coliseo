@@ -240,11 +240,15 @@ public class Role implements Hitbox{
 			this.totalWeight += equipment.getWeaponL().getWeight();
 			this.setPowL(equipment.getWeaponL().getPow());
 		}
+		else
+			this.setPowL(0);
 		
 		if(equipment.getWeaponR() != null) {
 			this.totalWeight += equipment.getWeaponR().getWeight();
 			this.setPowR(equipment.getWeaponR().getPow());
 		}
+		else
+			this.setPowR(0);
 		
 		if(equipment.getArmorH() != null) {
 			this.totalWeight += equipment.getArmorH().getWeight();
@@ -351,14 +355,29 @@ public class Role implements Hitbox{
 	 * @param direction Direccion a utilizar para calcular la posicion del arma
 	 * @return Regresa metodo hit
 	 */
-	public boolean shot(double angle, int v0, Weapon w, Role r, Direction direction) throws NegativeNumberFound {
+	public boolean shot(double angle, int v0, Role r, Direction wDir, Direction direction) throws NegativeNumberFound {
 		if(angle < 0)
 			throw new NegativeNumberFound(angle);
 		if(v0 < 0)
 			throw new NegativeNumberFound(v0);
 		
+		int baseX, baseY;
+		
+		if(this.getE().getWeaponL() != null && wDir == Direction.LEFT) {
+			baseX = this.getE().getWeaponL().getX(); 
+			baseY = this.getE().getWeaponL().getY();
+		}
+		else if(this.getE().getWeaponR() != null && wDir == Direction.RIGHT) {
+			baseX = this.getE().getWeaponR().getX(); 
+			baseY = this.getE().getWeaponR().getY();
+		}
+		else {
+			System.out.println("Not object in your possession to throw");
+			return false;
+		}
+		
 		angle *= Math.PI / 180;
-		int x = 0, baseX = w.getX(), baseY = w.getY();
+		int x = 0, tempX, tempY;
 		double y = 1;
 		double maxX = v0 * v0 * Math.sin(2 * angle) / GRAVITY;
 		System.out.println(maxX);
@@ -370,23 +389,39 @@ public class Role implements Hitbox{
 			System.out.printf("%d, %f\n", x, y);
 			if(y > 0) {
 				if(direction == Direction.RIGHT) {
-					w.setX((int) (baseX + x));
-					w.setY((int) (baseY - y));
+					if(wDir == Direction.RIGHT) {
+						this.getE().getWeaponR().setX((int) (baseX + x));
+						this.getE().getWeaponR().setY((int) (baseY - y));
+					}
+					else {
+						this.getE().getWeaponL().setX((int) (baseX + x));
+						this.getE().getWeaponL().setY((int) (baseY - y));
+					}
 				}
 				else if(direction == Direction.LEFT) {
-					w.setX((int) (baseX - x));
-					w.setY((int) (baseY - y));
+					if(wDir == Direction.LEFT) {
+						this.getE().getWeaponL().setX((int) (baseX - x));
+						this.getE().getWeaponL().setY((int) (baseY - y));
+					}
+					else {
+						this.getE().getWeaponR().setX((int) (baseX - x));
+						this.getE().getWeaponR().setY((int) (baseY - y));
+					}
+						
 				}
 			}
 			else
 				break;
-			System.out.printf("%d, %d\n", w.getX(), w.getY());
-			if(r.hit(w))
+			
+			tempX = wDir == Direction.RIGHT? this.getE().getWeaponR().getX() : this.getE().getWeaponL().getX();
+			tempY = wDir == Direction.RIGHT? this.getE().getWeaponR().getY() : this.getE().getWeaponL().getY();
+			
+			System.out.printf("%d, %d\n", tempX, tempY);
+			if(r.hit(wDir == Direction.RIGHT? this.getE().getWeaponR() : this.getE().getWeaponL()))
 				hit = true;
 		}
-			
-		return hit;
-		
+	
+		return hit;	
 	}
 	
 	@Override

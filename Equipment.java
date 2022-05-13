@@ -65,6 +65,8 @@ public class Equipment {
 			else 
 				System.out.println("Weapon selected exceed max capacity");
 		}
+		else
+			this.weaponR = null;
 	}
 	
 	/**
@@ -88,6 +90,8 @@ public class Equipment {
 			else
 				System.out.println("Weapon selected exceed max capacity");
 		}
+		else
+			this.weaponL = null;
 	}
 	
 	/**
