@@ -297,6 +297,22 @@ public class Role implements Hitbox{
 			this.x += toSum;
 		else if(direction == Direction.LEFT)
 			this.x -= toSum;
+		else if(direction == Direction.UP_RIGHT) {
+			this.x += toSum;
+			this.y -= toSum;
+		}
+		else if(direction == Direction.UP_LEFT) {
+			this.x -= toSum;
+			this.y -= toSum;
+		}
+		else if(direction == Direction.DOWN_RIGHT) {
+			this.x += toSum;
+			this.y += toSum;
+		}
+		else if(direction == Direction.DOWN_LEFT) {
+			this.x -= toSum;
+			this.y += toSum;
+		}
 		
 		if(this.getX() < 0 | this.getY() < 0) {
 			System.out.println("Role out of bounds");
@@ -325,6 +341,7 @@ public class Role implements Hitbox{
 		
 		return false;
 	}
+	
 	/**
 	 * Método para calcular el tiro parabolico segun la direccion que se le de y regresar hit
 	 * @param angle Valor a utilizar para calcular el angulo del tiro parabolico
@@ -371,10 +388,7 @@ public class Role implements Hitbox{
 		return hit;
 		
 	}
-	/**
-	 * Establece la longitud del objeto del personaje
-	 * @param l longitud que se le asignara al objeto del personaje
-	 */
+	
 	@Override
 	public void setLong(int l) throws NegativeNumberFound {
 		if(l < 0)
@@ -382,18 +396,12 @@ public class Role implements Hitbox{
 		
 		this.l = l;
 	}
-	/**
-	 * Método para regresar la longitud del objeto del personaje
-	 * @return Regresa la longitud del objeto del personaje
-	 */
+
 	@Override
 	public int getLong() {
 		return this.l;
 	}
-	/**
-	 * Establece la altura del objeto del personaje
-	 * @param h Altura que se le asignara al objeto del pesonaje
-	 */
+
 	@Override
 	public void setHeight(int h) throws NegativeNumberFound {
 		if(h < 0)
@@ -401,10 +409,7 @@ public class Role implements Hitbox{
 		
 		this.h = h;
 	}
-	/**
-	 * Método para regresar la altura del objeto del arma
-	 * @return Regresa la altura del objeto del arma
-	 */
+
 	@Override
 	public int getHeight() {
 		return h;
