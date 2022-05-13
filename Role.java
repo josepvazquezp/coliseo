@@ -254,16 +254,26 @@ public class Role implements Hitbox{
 			this.totalWeight += equipment.getArmorH().getWeight();
 			this.setTopDefense(equipment.getArmorH().getDefense());
 		}
+		else
+			this.setTopDefense(0);
 		
 		if(equipment.getArmorB() != null) {
 			this.totalWeight += equipment.getArmorB().getWeight();
 			this.setMidDefense(equipment.getArmorB().getDefense());
 		}
+		else if(equipment.getArmorS() == null)
+			this.setMidDefense(0);
+		else
+			this.setMidDefense(equipment.getArmorS().getDefense());
 		
 		if(equipment.getArmorS() != null) {
 			this.totalWeight += equipment.getArmorS().getWeight();
 			this.setMidDefense(this.midDefense + equipment.getArmorS().getDefense());
 		}
+		else if(equipment.getArmorB() == null)
+			this.setMidDefense(0);
+		else
+			this.setMidDefense(equipment.getArmorB().getDefense());
 		
 		this.setSpeed();
 	}
@@ -456,10 +466,10 @@ public class Role implements Hitbox{
 	 */
 	@Override
 	public String toString() {
-		return String.format("Left Pow: %d\tRight Pow: %d\nHP: %d\tPosition: (%d, %d)\tBaseSpeed:%d \tSpeed: %d\nWeight: %d\tTop defense: %d\t    Mid defense: %d\nEquipment: \n%s\nLong: %d \tHeight: %d", 
+		return String.format("Left Pow: %d\tRight Pow: %d\nHP: %d\tPosition: (%d, %d)\tBaseSpeed:%d \tSpeed: %d\nWeight: %d\tTop defense: %d\t    Mid defense: %d\nLong: %d \tHeight: %d\nEquipment: \n%s", 
 				             this.getPowL(), this.getPowR(), this.getHp(), this.getX(), this.getY(), this.getBaseSpeed(),
 				             this.getSpeed(), this.getTotalWeight(), 
-				             this.getTopDefense(), this.getMidDefense(), this.getE(), this.getLong(), this.getHeight());
+				             this.getTopDefense(), this.getMidDefense(), this.getLong(), this.getHeight(), this.getE());
 	}
 	
 	/** 
