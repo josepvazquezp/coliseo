@@ -387,11 +387,11 @@ public class Role implements Hitbox{
 		
 		int baseX, baseY;
 		
-		if(this.getE().getWeaponL() != null && wDir == Direction.LEFT) {
+		if(wDir == Direction.LEFT && this.getE().getWeaponL() != null && this.getE().getWeaponL().isFlyable()) {
 			baseX = this.getE().getWeaponL().getX(); 
 			baseY = this.getE().getWeaponL().getY();
 		}
-		else if(this.getE().getWeaponR() != null && wDir == Direction.RIGHT) {
+		else if(wDir == Direction.RIGHT && this.getE().getWeaponR() != null && this.getE().getWeaponR().isFlyable()) {
 			baseX = this.getE().getWeaponR().getX(); 
 			baseY = this.getE().getWeaponR().getY();
 		}
