@@ -51,17 +51,16 @@ public class interfaz_grafica extends JFrame{
 			asesino.setBounds(520, 350, 100, 50); add(asesino);
 			
 			fondo.setBounds(0, 0, 700, 500); add(fondo);
+			setVisible(true);
+			setLocationRelativeTo(null);
+			setBounds(0,0,700,500);
 			
 		}
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		interfaz_grafica ventana = new interfaz_grafica() ;
-		ventana.setBounds(0, 0, 700, 500);
-		ventana.setVisible(true);
-		ventana.setLocationRelativeTo(null);
 		
-	}
-
+		 public static void main(String[] args) { // TODO Auto-generated method stub
+			 interfaz_grafica ventana = new interfaz_grafica() ;
+		 }
+		 
 }
