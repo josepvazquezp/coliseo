@@ -1,13 +1,14 @@
 package proyecto;
 
 import com.iteso.motor.Direction;
+import com.iteso.motor.Equipment;
 import com.iteso.motor.Role;
 import com.iteso.motor.Weapon;
 
 public class RoleColiseo extends Role {
 	
 	public static final int DIF_TO_HEAD, L_HEAD, H_HEAD, V0;
-	Role head;
+	private Role head;
 	
 	static {			// por acordar según las dimensiones necesarias
 		DIF_TO_HEAD = 10;
@@ -18,14 +19,32 @@ public class RoleColiseo extends Role {
 	
 	public RoleColiseo() {
 		super();
+		
 		head = new Role();
 		head.setLong(L_HEAD);
 		head.setHeight(H_HEAD);
+		
+		Equipment e = new Equipment();
+		e.setWeaponL(Weapons.FIST.getWeapon());
+		e.setWeaponR(Weapons.FIST.getWeapon());
+		super.setE(e);
 	}
 	
 	public void updateHeadPosition() {
 		head.setX(super.getX());
 		head.setY(super.getY() + DIF_TO_HEAD);
+	}
+	
+	@Override
+	public void setX(int x) {
+		super.setX(x);
+		this.updateHeadPosition();
+	}
+	
+	@Override
+	public void setY(int y) {
+		super.setY(y);
+		this.updateHeadPosition();
 	}
 	
 	public Role getHead() {
@@ -193,6 +212,7 @@ public class RoleColiseo extends Role {
 		  }
 		  
 		  super.updateAtributes(super.getHp(), super.getX(), super.getY(), super.getE());
+		  r.updateAtributes(r.getHp(), r.getX(), r.getY(), r.getE());
 	}
 	
 	public void jump(boolean before) {
@@ -203,8 +223,8 @@ public class RoleColiseo extends Role {
 	}
 	
 	public void includeShield() {
-		if(super.getE().getWeaponL().equals(Weapons.IRON_SHIELD.getWeapon()) || 
-		   super.getE().getWeaponR().equals(Weapons.IRON_SHIELD.getWeapon())) {
+		if(super.getE().getWeaponL() != null && super.getE().getWeaponL().equals(Weapons.IRON_SHIELD.getWeapon()) || 
+		   super.getE().getWeaponR() != null && super.getE().getWeaponR().equals(Weapons.IRON_SHIELD.getWeapon())) {
 			if(super.getE().getArmorS() == null)
 				super.getE().setArmorS(Armors.IRON_SHIELD.getArmor());
 			else {
@@ -217,22 +237,35 @@ public class RoleColiseo extends Role {
 	}
 	
 	public boolean shot(int x, int y, RoleColiseo r, Direction wDir, Direction dShot) {
+		if(wDir == Direction.RIGHT && super.getE().getWeaponL() != null && super.getE().getWeaponL().isFlyable() == false)
+			return false;
+		if(wDir == Direction.LEFT && super.getE().getWeaponR() != null && super.getE().getWeaponR().isFlyable() == false)
+			return false;
+		
+		boolean hit = false;
 		double angle = Math.asin(x * Role.GRAVITY / (V0 * V0));
 		Weapon temp = wDir == Direction.RIGHT? super.getE().getWeaponR().clone() : super.getE().getWeaponL().clone();
-		
+		angle *= 57.2958;
+	
 		if(super.shot(angle, V0, r, wDir, dShot)) {
 			if(r.getHead().hit(temp)) {
-				r.setHp(r.getHp() - this.damage(r, wDir, true));
-				   
-				   if(r.getTopDefense() != 0)
+				r.setHp(r.getHp() - (int)(Math.pow(this.damage(r, wDir, true), 2) * temp.getType().getEndurance() / Math.abs(x - super.getX())));
+				//this.damage(r, wDir, false));
+				
+				   if(r.getTopDefense() != 0) {
 					   r.getE().getArmorH().decrease();
+					   r.updateAtributes(r.getHp(), r.getX(), r.getY(), r.getE());
+				   }
 				   
 			}
 			else {
-				  r.setHp(r.getHp() - this.damage(r, wDir, false));
+				  r.setHp(r.getHp() - (int)(Math.pow(this.damage(r, wDir, true), 2) * temp.getType().getEndurance() / Math.abs(x - super.getX())));
+				  //this.damage(r, wDir, false));
 				  
-				  if(r.getMidDefense() != 0)
+				  if(r.getMidDefense() != 0) {
 					  r.getE().getArmorB().decrease();
+					  r.updateAtributes(r.getHp(), r.getX(), r.getY(), r.getE());
+				  }
 			 }
 			
 			if(wDir == Direction.RIGHT)
@@ -240,7 +273,8 @@ public class RoleColiseo extends Role {
 			else
 				super.getE().setWeaponL(null);
 			
-			return true;
+			hit = true;
+			
 		}
 		
 		if(wDir == Direction.RIGHT)
@@ -251,7 +285,12 @@ public class RoleColiseo extends Role {
 		super.updateAtributes(super.getHp(), super.getX(), super.getY(), super.getE());
 		r.updateAtributes(r.getHp(), r.getX(), r.getY(), r.getE());
 		
-		return false;
+		return hit;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Head: %s\n\nRoleColiseo: %s", head.toString(), super.toString());
 	}
 	
 }
