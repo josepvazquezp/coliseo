@@ -340,17 +340,29 @@ public class Role implements Hitbox{
 	 * @return Regresa que el arma no le dio al objeto del personaje
 	 */
 	public boolean hit(Weapon weapon) {
-		double minXRole = this.getX() - this.l / 2.0;
-		double maxXRole = this.getX() + this.l / 2.0;
-		double minYRole = this.getY() - this.h / 2.0;
-		double maxYRole = this.getY() + this.h / 2.0;
+		double minXRole = this.getX() - this.getLong() / 2.0;
+		double maxXRole = this.getX() + this.getLong() / 2.0;
+		double minYRole = this.getY() - this.getHeight()/ 2.0;
+		double maxYRole = this.getY() + this.getHeight() / 2.0;
 		double minXWeapon = weapon.getX() - weapon.getLong() / 2.0;
 		double maxXWeapon = weapon.getX() + weapon.getLong() / 2.0;
 		double minYWeapon = weapon.getY() - weapon.getHeight() / 2.0;
 		double maxYWeapon = weapon.getY() + weapon.getHeight() / 2.0;
 		
-		if(((minXWeapon >= minXRole && minXWeapon <= maxXRole) || (maxXWeapon >= minXRole && maxXWeapon <= maxXRole)) && 
-		   ((minYWeapon >= minYRole && minYWeapon <= maxYRole) || (maxYWeapon >= minYRole && maxYWeapon <= maxYRole)))
+		if(minXWeapon >= minXRole && minXWeapon <= maxXRole && minYWeapon >= minYRole && minYWeapon <= maxYRole ||
+		   maxXWeapon >= minXRole && maxXWeapon <= maxXRole && minYWeapon >= minYRole && minYWeapon <= maxYRole ||
+		   maxXWeapon >= minXRole && maxXWeapon <= maxXRole && maxYWeapon >= minYRole && maxYWeapon <= maxYRole ||
+		   minXWeapon >= minXRole && minXWeapon <= maxXRole && maxYWeapon >= minYRole && maxYWeapon <= maxYRole ||
+		   minXRole >= minXWeapon && maxXRole >= minXWeapon && minXRole <= maxXWeapon && maxXRole <= maxXWeapon && 
+		   minYRole >= minYWeapon && minYRole <= maxYWeapon ||
+		   maxXRole >= minXWeapon && maxXRole <= maxXWeapon && minYRole >= minYWeapon && maxYRole >= minYWeapon &&
+		   minYRole <= maxYWeapon && maxYRole <= maxYWeapon ||
+		   minXRole >= minXWeapon && maxXRole >= minXWeapon && minXRole <= maxXWeapon && maxXRole <= maxXWeapon &&
+		   maxYRole >= minYWeapon && maxYRole < maxYWeapon ||
+		   minXRole >= minXWeapon && minXRole <= maxXWeapon && minYRole >= minYWeapon && maxYRole >= minYWeapon &&
+		   minYRole <= maxYWeapon && maxYRole <= maxYWeapon ||
+		   minXRole >= minXWeapon && minXRole <= maxXWeapon && maxXRole >= minXWeapon && maxXRole <= maxYWeapon &&
+		   minYRole >= minYWeapon && minYRole <= maxYWeapon && maxYRole >= minYWeapon && maxYRole <= maxYWeapon)
 			return true;
 		
 		return false;
@@ -390,11 +402,10 @@ public class Role implements Hitbox{
 		int x = 0, tempX, tempY;
 		double y = 1;
 		double maxX = v0 * v0 * Math.sin(2 * angle) / GRAVITY;
-		System.out.println(maxX);
 		boolean hit = false;
 		
 		while(y >= 0 && hit == false) {
-			x += maxX / 100;
+			x += Math.ceil(maxX / 100);
 			y = Math.tan(angle) * x - (GRAVITY * x * x) / (2 * v0 * v0 * Math.pow(Math.cos(angle), 2));
 			System.out.printf("%d, %f\n", x, y);
 			if(y > 0) {
