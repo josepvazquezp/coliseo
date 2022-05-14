@@ -198,8 +198,10 @@ public class Role implements Hitbox{
 	 * @param equipment Equipo que se le asignara al objeto del personaje
 	 */
 	public void setE(Equipment equipment) {
-		this.e = equipment;				
-		this.setTotalWeight_Pows_Defenses(equipment);
+		this.e = equipment;			
+		if(equipment != null) {
+			this.setTotalWeight_Pows_Defenses(equipment);
+		}
 	}
 	
 	/**
