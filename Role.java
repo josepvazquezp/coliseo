@@ -6,7 +6,7 @@ package com.iteso.motor;
  * @version 1.0
  */
 public class Role implements Hitbox{
-	private int powR = 0, powL = 0, hp = 0, x = 0, y = 0, speed, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
+	private int powR = 0, powL = 0, hp = 0, x = 0, y = 0, speed = 0, topDefense = 0, midDefense = 0, totalWeight = 0, baseSpeed;
 	private Equipment e;
 	public static final double GRAVITY = 9.81;
 	private int l = 1, h = 1;
@@ -131,7 +131,7 @@ public class Role implements Hitbox{
 	 * Método para regresar la Velocidad del objeto del personaje
 	 *@return Regresa la Velocidad del objeto del personaje
 	 */
-	private int getSpeed() {
+	public int getSpeed() {
 		return this.speed;
 	}
 	

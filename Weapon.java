@@ -258,7 +258,7 @@ public class Weapon extends EnduranceObject implements Hitbox {
 
 	/**
 	 * Establece la altura del objeto del arma
-	 * @param h Altura que se le asignara al objeto del arma
+	 * @param h Altura que se le asignara al objeto de la armadura
 	 */
 	@Override
 	public void setHeight(int h) throws NegativeNumberFound {
@@ -269,8 +269,8 @@ public class Weapon extends EnduranceObject implements Hitbox {
 	}
 
 	/**
-	 * Método para regresar la altura del objeto del arma
-	 * @return Regresa la altura del objeto del arma
+	 * Método para regresar la altura del objeto de la armadura
+	 * @return Regresa la altura del objeto de la armadura
 	 */
 	@Override
 	public int getHeight() {
@@ -283,8 +283,8 @@ public class Weapon extends EnduranceObject implements Hitbox {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Weapon: %s \tType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d\nLong: %d \tHeight: %d", 
-				             this.getName(), this.getType().toString(), this.isFlyable(), this.getPow(), this.getWeight(),
+		return String.format("Weapon: %s \tX: %d \tY: %d\nType: [%s]\tFlyable: %b\nPow: %d \tWeight: %d \tDistance: %d\nEndurance: %d \tCapacity: %d\nLong: %d \tHeight: %d", 
+				             this.getName(), this.getX(), this.getY(),this.getType().toString(), this.isFlyable(), this.getPow(), this.getWeight(),
 				             this.getDistance(), this.getEndurance(), this.getCapacity(), this.getLong(), this.getHeight());
 	}
 	

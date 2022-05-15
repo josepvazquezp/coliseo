@@ -1,4 +1,5 @@
 package com.iteso.motor;
+
 /**
  * Clase NegativeNumberFound de la aplicación
  * @author José Pablo Vázquez Partida, Octavio Valdez Fonseca, José Eduardo Pérez Valenzuela
@@ -6,6 +7,7 @@ package com.iteso.motor;
  */
 public class NegativeNumberFound extends RuntimeException {
 	private double NegativeNumberFound;
+	
 	/** 
 	 * Método que establece el numero regativo encontrado
 	 * @param n Numero negativo encontrado del objeto de numero negativo
@@ -14,6 +16,7 @@ public class NegativeNumberFound extends RuntimeException {
 		super("NegativeNumberFoundEsxception");
 		this.NegativeNumberFound = n;
 	}
+	
 	/** 
 	 * Método para regresar cadena de texto del numero negativo encontrado
 	 * @return Regresa cadena de texto del numero negativo encontrado

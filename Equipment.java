@@ -129,7 +129,7 @@ public class Equipment {
 	 * @param armorH Armadura casco que se le asignara al objeto
 	 */
 	public void setArmorH(Armor armorH) {
-		if(armorH != null && this.armorH == null && armorH.isHelmet())
+		if(armorH != null && armorH.isHelmet())
 			this.armorH = armorH;
 	}
 	
@@ -146,7 +146,7 @@ public class Equipment {
 	 * @param armorH Armadura breastplate que se le asignara al objeto
 	 */
 	public void setArmorB(Armor armorB) {
-		if(armorB != null && this.armorB == null && armorB.isHelmet() == false)
+		if(armorB != null && armorB.isHelmet() == false)
 			this.armorB = armorB;
 	}
 	

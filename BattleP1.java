@@ -22,23 +22,23 @@ public class BattleP1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleP1 frame = new BattleP1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					BattleP1 frame = new BattleP1();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public BattleP1() {
+	public BattleP1(RoleColiseo r) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 715, 500);
 		contentPane = new JPanel();
@@ -203,7 +203,8 @@ public class BattleP1 extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("HP: ");
 		lblNewLabel_3.setFont(new Font("Yu Gothic", Font.BOLD, 20));
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(240, 330, 49, 30);
+		lblNewLabel_3.setBounds(240, 330, 75, 30);
+		lblNewLabel_3.setText("HP: " + r.getHp());
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("SPEED: ");

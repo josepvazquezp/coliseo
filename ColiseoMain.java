@@ -169,6 +169,11 @@ public class ColiseoMain {
 		
 		r.setE(e1);
 //		System.out.println(r);
+		r.getE().getWeaponR().setX(r.getX());
+		r.getE().getWeaponR().setY(r.getY());
+		
+		r.getE().getWeaponL().setX(r.getX());
+		r.getE().getWeaponL().setY(r.getY());
 		
 		equip = false;
 		
@@ -315,9 +320,22 @@ public class ColiseoMain {
 		}
 		
 		r2.setE(e2);
+		
+		r2.getE().getWeaponR().setX(r2.getX());
+		r2.getE().getWeaponR().setY(r2.getY());
+		
+		r2.getE().getWeaponL().setX(r2.getX());
+		r2.getE().getWeaponL().setY(r2.getY());
+		
 		System.out.println(r);
 		System.out.println(r2);
 		
+		BattleP1 b = new BattleP1(r);
+		
+		temp = false;
+		while(temp == false) {
+			b.setVisible(true);
+		}
 		
 		
 	}
