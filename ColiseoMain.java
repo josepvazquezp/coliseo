@@ -18,7 +18,7 @@ public class ColiseoMain {
 		Direction d = Direction.LEFT;
 		Direction d2 = Direction.RIGHT;
 		
-		boolean menu = true, equip = false, temp = true;
+		boolean menu = true, equip = false, temp = false;
 		
 		Menu m = new Menu(r);
 		ChooseCharacter w = new ChooseCharacter(r);
@@ -28,7 +28,9 @@ public class ColiseoMain {
 		int id = 0;
 		
 		SelectMaterial materialWR = null;
+		SelectMaterial materialWL = null;
 		
+		// weapons P1
 		while(equip == false) {
 			if(r.getX() == 0)
 				m.setVisible(true);
@@ -41,7 +43,7 @@ public class ColiseoMain {
 				cR.setVisible(true);
 			}
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_AXE.getWeapon())) {
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_AXE.getWeapon())) {
 				if(materialWR == null) {
 					materialWR = new SelectMaterial(e1, 1, true);
 					e1.setWeaponR(Weapons.FIST.getWeapon());
@@ -50,7 +52,7 @@ public class ColiseoMain {
 				materialWR.setVisible(true);
 			}
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_SWORD.getWeapon())) {
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_SWORD.getWeapon())) {
 				if(materialWR == null) {
 					materialWR = new SelectMaterial(e1, 2, true);
 					e1.setWeaponR(Weapons.FIST.getWeapon());
@@ -59,7 +61,7 @@ public class ColiseoMain {
 				materialWR.setVisible(true);
 			}
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_KUNAI.getWeapon())) {
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_KUNAI.getWeapon())) {
 				if(materialWR == null) {
 					materialWR = new SelectMaterial(e1, 3, true);
 					e1.setWeaponR(Weapons.FIST.getWeapon());
@@ -68,39 +70,254 @@ public class ColiseoMain {
 				materialWR.setVisible(true);
 			}
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_MACE.getWeapon())) {
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_MACE.getWeapon())) {
 				if(materialWR == null) {
 					materialWR = new SelectMaterial(e1, 4, true);
 					e1.setWeaponR(Weapons.FIST.getWeapon());
 				}
 				
 				materialWR.setVisible(true);
+				temp = true;
 			}
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_LONG_AXE.getWeapon())) {
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_LONG_AXE.getWeapon())) {
 				if(materialWR == null) {
 					materialWR = new SelectMaterial(e1, 5, true);
 					e1.setWeaponR(Weapons.FIST.getWeapon());
 				}
 				
 				materialWR.setVisible(true);
-				
+				temp = true;
 			}
 			
-			if(e1.getWeaponR() != null)
-				System.out.println();
+			System.out.println();
 			
-			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false)//&& e1.getWeaponL() != null)
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false) {
+				cL.setVisible(true);
+				e1.setWeaponL(Weapons.FIST.getWeapon());
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_AXE.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 1, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_SWORD.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 2, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_KUNAI.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 3, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				System.out.println("poyo");
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false && temp == true || e1.getWeaponR() != null && e1.getWeaponL() != null && 
+			   e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false &&
+			   e1.getWeaponL().equals(Weapons.FIST.getWeapon()) == false) {
 				equip = true;
+			}
 			
 		}
 		
 		r.setE(e1);
 		r.includeShield();
 		
+//		System.out.println(r);
+		
+		equip = false;
+		
+		SelectArmor sa = new SelectArmor(e1);
+		SelectMaterialArmor sam = null;
+		
+		// armors P1
+		while(equip == false) {
+			if(e1.getArmorH() == null && e1.getArmorB() == null)
+				sa.setVisible(true);
+			
+			if(e1.getArmorH() != null && e1.getArmorH().isHelmet() == true && e1.getArmorH().getDefense() == 0) {
+				if(sam == null) {
+					sam = new SelectMaterialArmor(e1, 2); 
+				}
+				
+				sam.setVisible(true);
+			}
+			
+			if(e1.getArmorB() != null && e1.getArmorB().isHelmet() == false && e1.getArmorB().getDefense() == 0) {
+				if(sam == null) {
+					sam = new SelectMaterialArmor(e1, 1); 
+				}
+				
+				sam.setVisible(true);
+			}
+			
+			if(e1.getArmorH() != null && e1.getArmorH().getDefense() > 0 || e1.getArmorB() != null && e1.getArmorB().getDefense() > 0)
+				equip = true;
+		}
+		
+		r.setE(e1);
 		System.out.println(r);
-		equip = true;
+		
+		equip = false;
+		
 		w = new ChooseCharacter(r2);
+		cR = new ChooseRightWeapon(e2);
+		cL = new ChooseLeftWeapon(e2);
+		
+		materialWR = null;
+		materialWL = null;
+		
+		// weapons P2
+		while(equip == false) {
+			if(r.getX() == 0)
+				m.setVisible(true);
+				
+			if(r.getX() != 0 && r.getHp() == 0) {
+				w.setVisible(true);
+			}
+			
+			if(r.getHp() != 0 &&  e1.getWeaponR() == null) {
+				cR.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_AXE.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 1, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_SWORD.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 2, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_KUNAI.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 3, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_MACE.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 4, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+				temp = true;
+			}
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_LONG_AXE.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 5, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+				temp = true;
+			}
+			
+			System.out.println();
+			
+			if(e1.getWeaponL() == null && e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false) {
+				cL.setVisible(true);
+				e1.setWeaponL(Weapons.FIST.getWeapon());
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_AXE.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 1, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_SWORD.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 2, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponL() != null && e1.getWeaponL().equals(Weapons.COPPER_KUNAI.getWeapon())) {
+				if(materialWL == null) {
+					materialWL = new SelectMaterial(e1, 3, false);
+					e1.setWeaponL(Weapons.FIST.getWeapon());
+				}
+				System.out.println("poyo");
+				materialWL.setVisible(true);
+			}
+			
+			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false && temp == true || e1.getWeaponR() != null && e1.getWeaponL() != null && 
+			   e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false &&
+			   e1.getWeaponL().equals(Weapons.FIST.getWeapon()) == false) {
+				equip = true;
+			}
+			
+		}
+		
+		r.setE(e1);
+		r.includeShield();
+		
+//		System.out.println(r);
+		
+		equip = false;
+		
+		SelectArmor sa = new SelectArmor(e1);
+		SelectMaterialArmor sam = null;
+		
+		// armors P1
+		while(equip == false) {
+			if(e1.getArmorH() == null && e1.getArmorB() == null)
+				sa.setVisible(true);
+			
+			if(e1.getArmorH() != null && e1.getArmorH().isHelmet() == true && e1.getArmorH().getDefense() == 0) {
+				if(sam == null) {
+					sam = new SelectMaterialArmor(e1, 2); 
+				}
+				
+				sam.setVisible(true);
+			}
+			
+			if(e1.getArmorB() != null && e1.getArmorB().isHelmet() == false && e1.getArmorB().getDefense() == 0) {
+				if(sam == null) {
+					sam = new SelectMaterialArmor(e1, 1); 
+				}
+				
+				sam.setVisible(true);
+			}
+			
+			if(e1.getArmorH() != null && e1.getArmorH().getDefense() > 0 || e1.getArmorB() != null && e1.getArmorB().getDefense() > 0)
+				equip = true;
+		}
+		
+		r.setE(e1);
+		System.out.println(r);
 		
 	}
 }

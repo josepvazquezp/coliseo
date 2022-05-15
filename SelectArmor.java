@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.iteso.motor.Armor;
+import com.iteso.motor.Equipment;
+
 public class SelectArmor extends JFrame {
 
 	private JPanel contentPane;
@@ -21,23 +24,23 @@ public class SelectArmor extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectArmor frame = new SelectArmor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SelectArmor frame = new SelectArmor();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SelectArmor() {
+	public SelectArmor(Equipment equipment) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
@@ -58,9 +61,8 @@ public class SelectArmor extends JFrame {
 		contentPane.add(breastplate);
 		breastplate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectMaterialArmor newframe = new SelectMaterialArmor(1);
-				
-				newframe.setVisible(true);
+				Armor temp = new Armor();
+				equipment.setArmorB(temp);
 				
 				SelectArmor.this.dispose();
 			}
@@ -73,9 +75,9 @@ public class SelectArmor extends JFrame {
 		contentPane.add(helmet);
 		helmet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectMaterialArmor newframe = new SelectMaterialArmor(2);
-				
-				newframe.setVisible(true);
+				Armor temp = new Armor();
+				temp.setHelmet(true);
+				equipment.setArmorH(temp);
 				
 				SelectArmor.this.dispose();
 			}

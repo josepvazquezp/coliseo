@@ -9,8 +9,8 @@ public enum Armors {
 	COPPER_HELMET(50, 20, true, "Copper Helmet", Materials.COPPER.getMaterial(), 50, 25), 
 	
 	GOLD_BREASTPLATE(300, 100, false, "Gold Breastplate", Materials.GOLD.getMaterial(), 100, 50), 
-	IRON_BREASTPLATE(200, 80, false, "Gold Breastplate", Materials.IRON.getMaterial(), 100, 50), 
-	COPPER_BREASTPLATE(100, 60, false, "Gold Breastplate", Materials.COPPER.getMaterial(), 100, 50),
+	IRON_BREASTPLATE(200, 80, false, "Iron Breastplate", Materials.IRON.getMaterial(), 100, 50), 
+	COPPER_BREASTPLATE(100, 60, false, "Copper Breastplate", Materials.COPPER.getMaterial(), 100, 50),
 
 	IRON_SHIELD(100, 20, false, "Shield", Materials.IRON.getMaterial(), 80, 60);
 	

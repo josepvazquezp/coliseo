@@ -61,9 +61,7 @@ public class ChooseLeftWeapon extends JFrame {
 		axe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Todo lo que quiero que se haga cuando se de clic al boton
-				SelectMaterial newframe = new SelectMaterial(equipment, 1, false);
-				
-				newframe.setVisible(true);
+				equipment.setWeaponL(Weapons.COPPER_AXE.getWeapon());
 				
 				ChooseLeftWeapon.this.dispose();
 			}
@@ -77,9 +75,7 @@ public class ChooseLeftWeapon extends JFrame {
 		sword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Todo lo que quiero que se haga cuando se de clic al boton
-				SelectMaterial newframe = new SelectMaterial(equipment, 2, false);
-				
-				newframe.setVisible(true);
+				equipment.setWeaponL(Weapons.COPPER_SWORD.getWeapon());
 				
 				ChooseLeftWeapon.this.dispose();
 			}
@@ -93,50 +89,16 @@ public class ChooseLeftWeapon extends JFrame {
 		kunai.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Todo lo que quiero que se haga cuando se de clic al boton
-				SelectMaterial newframe = new SelectMaterial(equipment, 3, false);
-				
-				newframe.setVisible(true);
-				
-				ChooseLeftWeapon.this.dispose();
-			}
-		});
-		
-		JButton mace = new JButton("");
-		mace.setIcon(new ImageIcon(ChooseRightWeapon.class.getResource("/proyecto/images/mace_c.png")));
-		mace.setBackground(Color.BLACK);
-		mace.setBounds(101, 250, 125, 92);
-		contentPane.add(mace);
-		mace.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Todo lo que quiero que se haga cuando se de clic al boton
-				SelectMaterial newframe = new SelectMaterial(equipment, 4, false);
-				
-				newframe.setVisible(true);
-				
-				ChooseLeftWeapon.this.dispose();
-			}
-		});
-		
-		JButton longaxe = new JButton("");
-		longaxe.setIcon(new ImageIcon(ChooseRightWeapon.class.getResource("/proyecto/images/lonaxe_c.png")));
-		longaxe.setBackground(Color.BLACK);
-		longaxe.setBounds(292, 250, 125, 92);
-		contentPane.add(longaxe);
-		longaxe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Todo lo que quiero que se haga cuando se de clic al boton
-				SelectMaterial newframe = new SelectMaterial(equipment, 5, false);
-				
-				newframe.setVisible(true);
+				equipment.setWeaponL(Weapons.COPPER_KUNAI.getWeapon());
 				
 				ChooseLeftWeapon.this.dispose();
 			}
 		});
 		
 		JButton shield = new JButton("");
-		shield.setIcon(new ImageIcon(ChooseLeftWeapon.class.getResource("/proyecto/images/shield_c.png")));
+		shield.setIcon(new ImageIcon(ChooseRightWeapon.class.getResource("/proyecto/images/shield_c.png")));
 		shield.setBackground(Color.BLACK);
-		shield.setBounds(471, 250, 125, 92);
+		shield.setBounds(292, 250, 125, 92);
 		contentPane.add(shield);
 		shield.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,26 +127,14 @@ public class ChooseLeftWeapon extends JFrame {
 		info_kunai.setBounds(481, 198, 115, 14);
 		contentPane.add(info_kunai);
 		
-		JLabel info_mace = new JLabel("Mace      Capacity = 2");
-		info_mace.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		info_mace.setForeground(Color.WHITE);
-		info_mace.setBounds(111, 350, 125, 14);
-		contentPane.add(info_mace);
-		
-		JLabel info_longaxe = new JLabel("LongAxe  Capacity = 2");
-		info_longaxe.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		info_longaxe.setForeground(Color.WHITE);
-		info_longaxe.setBounds(302, 353, 115, 14);
-		contentPane.add(info_longaxe);
-		
 		JLabel info_shield = new JLabel("Shield     Capacity = 1");
 		info_shield.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		info_shield.setForeground(Color.WHITE);
-		info_shield.setBounds(481, 353, 115, 14);
+		info_shield.setBounds(302, 353, 115, 14);
 		contentPane.add(info_shield);
 		
 		JLabel Fondo = new JLabel("");
-		Fondo.setIcon(new ImageIcon(ChooseLeftWeapon.class.getResource("/proyecto/images/fondo_weaponsB.jpg")));
+		Fondo.setIcon(new ImageIcon(ChooseRightWeapon.class.getResource("/proyecto/images/fondo_weaponsB.jpg")));
 		Fondo.setBounds(0, 0, 684, 461);
 		contentPane.add(Fondo);
 		
