@@ -58,12 +58,23 @@ public class Equipment {
 	 */
 	public void setWeaponR(Weapon weaponR) {
 		if(weaponR != null) {
+			boolean temp = false;
+			
+			if(this.getWeaponR() != null) {
+				 this.weaponCapacity -= this.getWeaponR().getCapacity();
+				 temp = true;
+			}
+				
 			if(this.checkCapacity(weaponR)) {
 				this.weaponR = weaponR;
 				this.weaponCapacity += weaponR.getCapacity();
 			}
-			else 
+			else {
 				System.out.println("Weapon selected exceed max capacity");
+			
+				if(temp)
+					this.weaponCapacity += this.getWeaponR().getCapacity();
+			}
 		}
 		else
 			this.weaponR = null;
@@ -83,12 +94,23 @@ public class Equipment {
 	 */
 	public void setWeaponL(Weapon weaponL) {
 		if(weaponL != null) {
+			boolean temp = false;
+			
+			if(this.getWeaponL() != null) {
+				 this.weaponCapacity -= this.getWeaponL().getCapacity();
+				 temp = true;
+			}
+				
 			if(this.checkCapacity(weaponL)) {
 				this.weaponL = weaponL;
 				this.weaponCapacity += weaponL.getCapacity();
 			}
-			else
+			else {
 				System.out.println("Weapon selected exceed max capacity");
+			
+				if(temp)
+					this.weaponCapacity += this.getWeaponL().getCapacity();
+			}
 		}
 		else
 			this.weaponL = null;
