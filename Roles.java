@@ -3,18 +3,20 @@ package proyecto;
 import com.iteso.motor.Role;
 
 public enum Roles {
-	ASSESSIN(100, 1000),
-	STANDAR(200, 500),
-	TANK(300, 300);
+	ASSESSIN(100, 1000, 0, 0),
+	STANDAR(200, 500, 0, 0),
+	TANK(300, 300, 0, 0);
 	
-	private Role r = new Role();
+	private RoleColiseo r = new RoleColiseo();
 	
-	private Roles(int hp, int speed) {
-		this.r.setHp(hp);
-		this.r.setBaseSpeed(speed);
+	private Roles(int hp, int speed, int l, int h) {
+		r.setHp(hp);
+		r.setBaseSpeed(speed);
+		r.setLong(l);
+		r.setHeight(h);
 	}
 	
-	public Role getRole() {
+	public RoleColiseo getRole() {
 		return this.r;
 	}
 }

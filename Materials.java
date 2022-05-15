@@ -1,9 +1,10 @@
 package proyecto;
 
 import com.iteso.motor.Material;
+import com.iteso.motor.NegativeNumberFound;
 
 public enum Materials {
-	GOLD("gold", 75),
+	GOLD("gold", 75), 
 	IRON("iron", 50),
 	COPPER("copper", 25),
 	FLESH("flesh", 0);
@@ -11,7 +12,7 @@ public enum Materials {
 	private Material material = new Material();
 	
 	private Materials(String name, int endurance) {
-		material.setMaterial(name, endurance);;
+		material.setMaterial(name, endurance);
 	}
 	
 	public Material getMaterial() {

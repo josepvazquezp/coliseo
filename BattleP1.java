@@ -161,6 +161,7 @@ public class BattleP1 extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("MOVE");
+		btnNewButton_1.setEnabled(true);
 		btnNewButton_1.setBackground(new Color(95, 158, 160));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBounds(400, 340, 89, 23);
