@@ -23,6 +23,7 @@ public class ColiseoMain {
 		Menu m = new Menu(r);
 		ChooseCharacter w = new ChooseCharacter(r);
 		ChooseRightWeapon cR = new ChooseRightWeapon(e1);
+		ChooseLeftWeapon cL = new ChooseLeftWeapon(e1);
 		
 		int id = 0;
 		
@@ -75,6 +76,22 @@ public class ColiseoMain {
 				
 				materialWR.setVisible(true);
 			}
+			
+			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.COPPER_LONG_AXE.getWeapon())) {
+				if(materialWR == null) {
+					materialWR = new SelectMaterial(e1, 5, true);
+					e1.setWeaponR(Weapons.FIST.getWeapon());
+				}
+				
+				materialWR.setVisible(true);
+				
+			}
+			
+			if(e1.getWeaponR() != null)
+				System.out.println();
+			
+			if(e1.getWeaponR() != null && e1.getWeaponR().equals(Weapons.FIST.getWeapon()) == false)//&& e1.getWeaponL() != null)
+				equip = true;
 			
 		}
 		
