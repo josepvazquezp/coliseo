@@ -30,7 +30,7 @@ public class ColiseoMain {
 		
 		SelectMaterial materialWR = null;
 		SelectMaterial materialWL = null;
-		/*
+
 		// weapons P1
 		while(equip == false) {
 			if(r.getX() == 0)
@@ -330,12 +330,78 @@ public class ColiseoMain {
 		
 		System.out.println(r);
 		System.out.println(r2);
-		*/
+		
 		Weapon o = new Weapon();
 		Weapon o2 = new Weapon();
 		
-		Battle b = new Battle(r, true, o);
-		Battle b2 = new Battle(r2, false, o);
+		int mace = 75, longAxe = 70, axe = 20, sword = 45, kunai = 20, shield = 60; 
+		
+		int P1_W_R = 0, P1_W_L = 0, P2_W_R = 0, P2_W_L = 0, P1_A = 0, P2_A = 0;
+		
+		if(r.getE().getWeaponR().getHeight() == axe)
+			P1_W_R = 1;
+		else if(r.getE().getWeaponR().getHeight() == sword)
+			P1_W_R = 2;
+		else if(r.getE().getWeaponR().getLong() == kunai)
+			P1_W_R = 3;
+		else if(r.getE().getWeaponR().getHeight() == mace)
+			P1_W_R = 4;
+		else if(r.getE().getWeaponR().getHeight() == longAxe)
+			P1_W_R = 5;
+		else if(r.getE().getWeaponR().getHeight() == shield)
+			P1_W_R = 6;
+		
+		if(r2.getE().getWeaponR().getHeight() == axe)
+			P2_W_R = 1;
+		else if(r2.getE().getWeaponR().getHeight() == sword)
+			P2_W_R = 2;
+		else if(r2.getE().getWeaponR().getLong() == kunai)
+			P2_W_R = 3;
+		else if(r2.getE().getWeaponR().getHeight() == mace)
+			P2_W_R = 4;
+		else if(r2.getE().getWeaponR().getHeight() == longAxe)
+			P2_W_R = 5;
+		else if(r2.getE().getWeaponR().getHeight() == shield)
+			P2_W_R = 6;
+		
+		if(r.getE().getWeaponL() != null) {
+			if(r.getE().getWeaponL().getHeight() == axe)
+				P1_W_L = 1;
+			else if(r.getE().getWeaponL().getHeight() == sword)
+				P1_W_L = 2;
+			else if(r.getE().getWeaponL().getLong() == kunai)
+				P1_W_L = 3;
+			else if(r.getE().getWeaponL().getHeight() == shield)
+				P1_W_L = 4;
+		}
+		else
+			P1_W_L = 0;
+		
+		if(r2.getE().getWeaponL() != null) {
+			if(r2.getE().getWeaponL().getHeight() == axe)
+				P2_W_L = 1;
+			else if(r2.getE().getWeaponL().getHeight() == sword)
+				P2_W_L = 2;
+			else if(r2.getE().getWeaponL().getLong() == kunai)
+				P2_W_L = 3;
+			else if(r2.getE().getWeaponL().getHeight() == shield)
+				P2_W_L = 4;
+		}
+		else
+			P2_W_L = 0;
+		
+		if(r.getE().getArmorB() != null)
+			P1_A = 1;
+		else
+			P1_A = 2;
+		
+		if(r2.getE().getArmorB() != null)
+			P2_A = 1;
+		else
+			P2_A = 2;
+		
+		Battle b = new Battle(r, true, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
+		Battle b2 = new Battle(r2, false, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
 		
 		WeaponDirection wd = new WeaponDirection(o2);
 		ActionDirection rd = null;
@@ -371,14 +437,34 @@ public class ColiseoMain {
 				
 				if(o.getX() == 2 || o.getX() == 1 && o2.getX() == 1 || o.getX() == 1 && o2.getX() == 2) {
 					if(rd == null)
-						rd = new ActionDirection(r, r2, o, o2);
+						rd = new ActionDirection(r, r2, o, o2, turn);
 					
 					rd.setVisible(true);
 				}
 					
 			}
 			else if(turn == false) {
+				if((o.getX() == 1 || o.getX() == 4) && o2.getX() == 0)
+					wd.setVisible(true);
 				
+				if(o.getX() == 3) { 
+					jumpP2 = true;
+					o.setX(99);
+				}
+				
+				if(o.getX() == 4 && o2.getX() == 1 || o.getX() == 4 && o2.getX() == 2) {
+					if(ms == null)
+						ms = new MapShot(r2, r, turn, o);
+				
+					ms.setVisible(true);
+				}
+				
+				if(o.getX() == 2 || o.getX() == 1 && o2.getX() == 1 || o.getX() == 1 && o2.getX() == 2) {
+					if(rd == null)
+						rd = new ActionDirection(r2, r, o, o2, turn);
+					
+					rd.setVisible(true);
+				}
 			}
 			
 			if(o.getX() == 99) {

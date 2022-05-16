@@ -44,7 +44,7 @@ public class ActionDirection extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ActionDirection(RoleColiseo r, RoleColiseo r2, Weapon o, Weapon o2) {
+	public ActionDirection(RoleColiseo r, RoleColiseo r2, Weapon o, Weapon o2, boolean turn) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 715, 500);
 		contentPane = new JPanel();
@@ -147,10 +147,18 @@ public class ActionDirection extends JFrame {
 		lblNewLabel.setBounds(0, 0, 700, 310);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p1_im.png")));
-		lblNewLabel_1.setBounds(25, 320, 219, 118);
-		contentPane.add(lblNewLabel_1);
+		if(turn) {
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p1_im.png")));
+			lblNewLabel_1.setBounds(25, 320, 219, 118);
+			contentPane.add(lblNewLabel_1);
+		}
+		else {
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p2.png")));
+			lblNewLabel_1.setBounds(25, 320, 219, 118);
+			contentPane.add(lblNewLabel_1);
+		}
 		
 		JButton btnNewButton_1_1 = new JButton("RIGHT");
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -227,5 +235,175 @@ public class ActionDirection extends JFrame {
 			}
 		});
 		contentPane.add(btnNewButton_2_1);
+		
+		JButton btnNewButton_4 = new JButton("s1");
+		btnNewButton_4.setBackground(new Color(201, 164, 97));
+		btnNewButton_4.setBounds(0, 204, 140, 35);
+		btnNewButton_4.setEnabled(false);
+		contentPane.add(btnNewButton_4);
+		
+		JButton btnNewButton_4_1 = new JButton("s2");
+		btnNewButton_4_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_1.setBounds(0, 239, 140, 35);
+		btnNewButton_4_1.setEnabled(false);
+		contentPane.add(btnNewButton_4_1);
+		
+		JButton btnNewButton_4_1_1 = new JButton("s3");
+		btnNewButton_4_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_1_1.setBounds(0, 274, 140, 35);
+		btnNewButton_4_1_1.setEnabled(false);
+		contentPane.add(btnNewButton_4_1_1);
+		
+		JButton btnNewButton_4_2 = new JButton("s4");
+		btnNewButton_4_2.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2.setBounds(140, 204, 140, 35);
+		btnNewButton_4_2.setEnabled(false);
+		contentPane.add(btnNewButton_4_2);
+		
+		JButton btnNewButton_4_2_1 = new JButton("s5");
+		btnNewButton_4_2_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_1.setBounds(140, 239, 140, 35);
+		btnNewButton_4_2_1.setEnabled(false);
+		contentPane.add(btnNewButton_4_2_1);
+		
+		JButton btnNewButton_4_2_1_1 = new JButton("s6");
+		btnNewButton_4_2_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_1_1.setBounds(140, 274, 140, 35);
+		btnNewButton_4_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S6X, ArenaMap.S6Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_1_1);
+		
+		JButton btnNewButton_4_2_2 = new JButton("s7");
+		btnNewButton_4_2_2.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2.setBounds(280, 204, 140, 35);
+		btnNewButton_4_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S7X, ArenaMap.S7Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2);
+		
+		JButton btnNewButton_4_2_2_1 = new JButton("s8");
+		btnNewButton_4_2_2_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1.setBounds(280, 239, 140, 35);
+		btnNewButton_4_2_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S8X, ArenaMap.S8Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1);
+		
+		JButton btnNewButton_4_2_2_1_1 = new JButton("s9");
+		btnNewButton_4_2_2_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1.setBounds(280, 274, 140, 35);
+		btnNewButton_4_2_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S9X, ArenaMap.S9Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1 = new JButton("s10");
+		btnNewButton_4_2_2_1_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1.setBounds(420, 204, 140, 35);
+		btnNewButton_4_2_2_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S10X, ArenaMap.S10Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_1 = new JButton("s11");
+		btnNewButton_4_2_2_1_1_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_1.setBounds(420, 239, 140, 35);
+		btnNewButton_4_2_2_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S11X, ArenaMap.S11Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_1_1 = new JButton("s12");
+		btnNewButton_4_2_2_1_1_1_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_1_1.setBounds(420, 274, 140, 35);
+		btnNewButton_4_2_2_1_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S12X, ArenaMap.S12Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1_1_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_2 = new JButton("s13");
+		btnNewButton_4_2_2_1_1_1_2.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_2.setBounds(560, 204, 140, 35);
+		btnNewButton_4_2_2_1_1_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S13X, ArenaMap.S13Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1_2);
+		
+		JButton btnNewButton_4_2_2_1_1_1_2_1 = new JButton("s14");
+		btnNewButton_4_2_2_1_1_1_2_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_2_1.setBounds(560, 239, 140, 35);
+		btnNewButton_4_2_2_1_1_1_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S14X, ArenaMap.S14Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1_2_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_2_1_1 = new JButton("s15");
+		btnNewButton_4_2_2_1_1_1_2_1_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_2_1_1.setBounds(560, 274, 140, 35);
+		btnNewButton_4_2_2_1_1_1_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.shot(ArenaMap.S15X, ArenaMap.S15Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
+				
+				o.setX(99);
+				
+				MapShot.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_4_2_2_1_1_1_2_1_1);
 	}
 }
