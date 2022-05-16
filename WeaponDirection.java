@@ -33,7 +33,7 @@ public class WeaponDirection extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WeaponDirection frame = new WeaponDirection(90, 35, new Weapon());
+					WeaponDirection frame = new WeaponDirection(6, 6, new Weapon());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,27 +48,27 @@ public class WeaponDirection extends JFrame {
 	public WeaponDirection(int id_weaponR, int id_weaponL, Weapon o) {
 		
 		switch(id_weaponR) {
-		case 100:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
-			capacityW = 2;
-			break;
-		case 90:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
-			capacityW = 2;
-			break;
-		case 35:
+		case 1:
 			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\axe_c.png"));
 			capacityW = 1;
 			break;
-		case 50:
+		case 2:
 			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\sword_c.png"));
 			capacityW = 1;
 			break;
-		case 20:
+		case 3:
 			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\kunai_c.png"));
 			capacityW = 1;
 			break;
-		case 80:
+		case 4:
+			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
+			capacityW = 2;
+			break;
+		case 5:
+			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
+			capacityW = 2;
+			break;
+		case 6:
 			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\shield_c.png"));
 			capacityW = 1;
 			break;
@@ -76,22 +76,22 @@ public class WeaponDirection extends JFrame {
 		}
 		
 		switch(id_weaponL) {
-		case 100:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
-			break;
-		case 90:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
-			break;
-		case 35:
+		case 1:
 			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\axe_c.png"));
 			break;
-		case 50:
+		case 2:
 			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\sword_c.png"));
 			break;
-		case 20:
+		case 3:
 			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\kunai_c.png"));
 			break;
-		case 80:
+		case 4:
+			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
+			break;
+		case 5:
+			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
+			break;
+		case 6:
 			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\shield_c.png"));
 			break;
 		default: break;
