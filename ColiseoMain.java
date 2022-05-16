@@ -2,12 +2,13 @@ package proyecto;
 
 import com.iteso.motor.Direction;
 import com.iteso.motor.Equipment;
+import com.iteso.motor.Weapon;
 
 public class ColiseoMain {
 	public static void main(String[] args) {
 		RoleColiseo r = new RoleColiseo();
 		RoleColiseo r2 = new RoleColiseo();
-		
+
 		r2.setX(ArenaMap.S14X);
 		r2.setY(ArenaMap.S14Y);
 		
@@ -29,7 +30,7 @@ public class ColiseoMain {
 		
 		SelectMaterial materialWR = null;
 		SelectMaterial materialWL = null;
-		
+		/*
 		// weapons P1
 		while(equip == false) {
 			if(r.getX() == 0)
@@ -329,12 +330,83 @@ public class ColiseoMain {
 		
 		System.out.println(r);
 		System.out.println(r2);
+		*/
+		Weapon o = new Weapon();
+		Weapon o2 = new Weapon();
 		
-		BattleP1 b = new BattleP1(r);
+		Battle b = new Battle(r, true, o);
+		Battle b2 = new Battle(r2, false, o);
+		
+		WeaponDirection wd = new WeaponDirection(o2);
+		ActionDirection rd = null;
+		MapShot ms = null;
 		
 		temp = false;
+		
+		int p1HP = r.getHp();
+		int p2HP = r2.getHp();
+		
 		while(temp == false) {
-			b.setVisible(true);
+			if(turn && o.getX() == 0)
+				b.setVisible(true);
+			
+			if(turn == false && o.getX() == 0)
+				b2.setVisible(true);
+			
+			if(turn) {
+				if((o.getX() == 1 || o.getX() == 4) && o2.getX() == 0)
+					wd.setVisible(true);
+				
+				if(o.getX() == 3) { 
+					jumpP1 = true;
+					o.setX(99);
+				}
+				
+				if(o.getX() == 4 && o2.getX() == 1 || o.getX() == 4 && o2.getX() == 2) {
+					if(ms == null)
+						ms = new MapShot(r, r2, turn, o);
+				
+					ms.setVisible(true);
+				}
+				
+				if(o.getX() == 2 || o.getX() == 1 && o2.getX() == 1 || o.getX() == 1 && o2.getX() == 2) {
+					if(rd == null)
+						rd = new ActionDirection(r, r2, o, o2);
+					
+					rd.setVisible(true);
+				}
+					
+			}
+			else if(turn == false) {
+				
+			}
+			
+			if(o.getX() == 99) {
+				o.setX(0);
+				o2.setX(0);
+				
+				if(jumpP1 == true)
+					r.jump(false);
+				
+				if(jumpP2 == true)
+					r2.jump(false);
+				
+				turn = !turn;
+			}
+			
+//			if(o.getX() == 0 && o2.getX() == 0)
+//				turn = !turn;
+			
+//			if(r.getHp() == 0) {
+//				o.setX(5);
+//				temp = false;
+//			}
+//			
+//			if(r2.getHp() == 0) {
+//				o.setX(6);
+//				temp = false;
+//			}
+			
 		}
 		
 		

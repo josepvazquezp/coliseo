@@ -12,7 +12,7 @@ public class RoleColiseo extends Role {
 	
 	static {			// por acordar según las dimensiones necesarias
 		DIF_TO_HEAD = 10;
-		L_HEAD = 10;
+		L_HEAD = 35;
 		H_HEAD = 10;
 		V0 = 100;
 	}
@@ -227,7 +227,8 @@ public class RoleColiseo extends Role {
 		   super.getE().getWeaponR() != null && super.getE().getWeaponR().equals(Weapons.IRON_SHIELD.getWeapon())) {
 			if(super.getE().getArmorS() == null)
 				super.getE().setArmorS(Armors.IRON_SHIELD.getArmor());
-			else {
+			else if(super.getE().getWeaponL() != null && super.getE().getWeaponL().equals(Weapons.IRON_SHIELD.getWeapon()) && 
+					super.getE().getWeaponR() != null && super.getE().getWeaponR().equals(Weapons.IRON_SHIELD.getWeapon())){
 				super.getE().getArmorS().setDefense(super.getE().getArmorS().getDefense() * 2);
 				super.getE().getArmorS().setWeight(super.getE().getArmorS().getWeight() * 2);
 			}
