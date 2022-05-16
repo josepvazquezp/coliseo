@@ -2,6 +2,7 @@ package proyecto;
 
 import com.iteso.motor.Direction;
 import com.iteso.motor.Equipment;
+import com.iteso.motor.NegativeNumberFound;
 import com.iteso.motor.Role;
 import com.iteso.motor.Weapon;
 
@@ -49,6 +50,30 @@ public class RoleColiseo extends Role {
 	
 	public Role getHead() {
 		return this.head;
+	}
+	
+	public void updatePosition() {
+		if(super.getE().getWeaponL() != null) {
+			super.getE().getWeaponL().setX(super.getX());
+			super.getE().getWeaponL().setY(super.getY());
+		}
+		
+		if(super.getE().getWeaponR() != null) {
+			super.getE().getWeaponR().setX(super.getX());
+			super.getE().getWeaponR().setY(super.getY());
+		}
+	}
+	
+	@Override
+	public void move(int toSumX, int toSumY, Direction direction) throws NegativeNumberFound {
+		if(this.getX() == ArenaMap.S1X && (direction == Direction.LEFT || direction == Direction.DOWN_LEFT || direction == Direction.UP_LEFT) || 
+		   this.getX() == ArenaMap.S13X && (direction == Direction.RIGHT || direction == Direction.DOWN_RIGHT || direction == Direction.UP_RIGHT)) {
+			toSumX = 0;
+			toSumY = 0;
+		}
+			
+		super.move(toSumX, toSumY, direction);
+		this.updatePosition();
 	}
 	
 	private int damage(RoleColiseo r, Direction dWeapon, boolean top) {
@@ -238,10 +263,15 @@ public class RoleColiseo extends Role {
 	}
 	
 	public boolean shot(int x, int y, RoleColiseo r, Direction wDir, Direction dShot) {
-		if(wDir == Direction.RIGHT && super.getE().getWeaponL() != null && super.getE().getWeaponL().isFlyable() == false)
+		if(wDir == Direction.RIGHT && super.getE().getWeaponR() != null && super.getE().getWeaponR().isFlyable() == false)
 			return false;
-		if(wDir == Direction.LEFT && super.getE().getWeaponR() != null && super.getE().getWeaponR().isFlyable() == false)
+		if(wDir == Direction.LEFT && super.getE().getWeaponL() != null && super.getE().getWeaponL().isFlyable() == false)
 			return false;
+		if(wDir == Direction.RIGHT && super.getE().getWeaponR() == null)
+			return false;
+		if(wDir == Direction.LEFT && super.getE().getWeaponL() == null)
+			return false;
+		
 		
 		boolean hit = false;
 		double angle = Math.asin(x * Role.GRAVITY / (V0 * V0));

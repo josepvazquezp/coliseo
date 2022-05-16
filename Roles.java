@@ -3,9 +3,9 @@ package proyecto;
 import com.iteso.motor.Role;
 
 public enum Roles {
-	ASSESSIN(100, 1000, 140, 25),
-	STANDAR(200, 500, 140, 25),
-	TANK(300, 300, 140, 25);
+	ASSESSIN(100, 1000, 280, 50), //140, 25),
+	STANDAR(200, 500, 280, 50),//140, 25),
+	TANK(300, 300, 280, 50);//140, 25);
 	
 	private RoleColiseo r = new RoleColiseo();
 	

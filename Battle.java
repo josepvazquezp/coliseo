@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.iteso.motor.Weapon;
+import javax.swing.SwingConstants;
 
 public class Battle extends JFrame {
 
@@ -72,7 +73,7 @@ public class Battle extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Battle(RoleColiseo r, boolean turn, Weapon w, int RoleSpeedP1, int RoleSpeedP2, int P1_W_R, int P1_W_L,int P2_W_R, int P2_W_L, int P1_A, int P2_A) {
+	public Battle(RoleColiseo r, RoleColiseo r2, boolean turn, Weapon w, int RoleSpeedP1, int RoleSpeedP2, int P1_W_R, int P1_W_L,int P2_W_R, int P2_W_L, int P1_A, int P2_A) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 715, 500);
 		contentPane = new JPanel();
@@ -572,12 +573,6 @@ public class Battle extends JFrame {
 		});
 		contentPane.add(btnNewButton_3);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
-		lblNewLabel.setBounds(0, 0, 700, 310);
-		contentPane.add(lblNewLabel);
-		
 		if(turn) {
 			JLabel lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p1_im.png")));
@@ -604,5 +599,26 @@ public class Battle extends JFrame {
 		lblNewLabel_3_1.setBounds(240, 370, 118, 30);
 		lblNewLabel_3_1.setText("SPEED: " + r.getSpeed());
 		contentPane.add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("HP:");
+		lblNewLabel_4.setFont(new Font("Yu Gothic", Font.BOLD, 15));
+		lblNewLabel_4.setForeground(Color.BLUE);
+		lblNewLabel_4.setText(turn?"HP: " + r.getHp() : "HP: " + r2.getHp());
+		lblNewLabel_4.setBounds(181, 26, 67, 33);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("HP: ");
+		lblNewLabel_4_1.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_4_1.setForeground(Color.RED);
+		lblNewLabel_4_1.setFont(new Font("Yu Gothic", Font.BOLD, 15));
+		lblNewLabel_4_1.setText(turn?"HP: " + r2.getHp() : "HP: " + r.getHp());
+		lblNewLabel_4_1.setBounds(531, 30, 67, 33);
+		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
+		lblNewLabel.setBounds(0, 0, 700, 310);
+		contentPane.add(lblNewLabel);
 	}
 }

@@ -1,4 +1,4 @@
-package testInterfaz;
+package proyecto;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,7 +25,6 @@ public class WeaponDirection extends JFrame {
 	private JLabel WR, WL;
 	private JButton right, left;
 	private int idW, capacityW;
-
 	/**
 	 * Launch the application.
 	 */
@@ -33,7 +32,7 @@ public class WeaponDirection extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WeaponDirection frame = new WeaponDirection(6, 6, new Weapon());
+					WeaponDirection frame = new WeaponDirection(6, 6, new Weapon(), true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,31 +44,30 @@ public class WeaponDirection extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public WeaponDirection(int id_weaponR, int id_weaponL, Weapon o) {
-		
+	public WeaponDirection(int id_weaponR, int id_weaponL, Weapon o, boolean turn) {
 		switch(id_weaponR) {
 		case 1:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\axe_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/axe_c.png")));
 			capacityW = 1;
 			break;
 		case 2:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\sword_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/sword_c.png")));
 			capacityW = 1;
 			break;
 		case 3:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\kunai_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/kunai_c.png")));
 			capacityW = 1;
 			break;
 		case 4:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/mace_c.png")));
 			capacityW = 2;
 			break;
 		case 5:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/lonaxe_c.png")));
 			capacityW = 2;
 			break;
 		case 6:
-			WR = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\shield_c.png"));
+			WR = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/shield_c.png")));
 			capacityW = 1;
 			break;
 		default: break;
@@ -77,27 +75,25 @@ public class WeaponDirection extends JFrame {
 		
 		switch(id_weaponL) {
 		case 1:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\axe_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/axe_c.png")));
 			break;
 		case 2:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\sword_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/sword_c.png")));
 			break;
 		case 3:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\kunai_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/kunai_c.png")));
 			break;
 		case 4:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\mace_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/mace_c.png")));
 			break;
 		case 5:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\lonaxe_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/lonaxe_c.png")));
 			break;
 		case 6:
-			WL = new JLabel(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\shield_c.png"));
+			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/shield_c.png")));
 			break;
 		default: break;
 		}
-		
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 715, 500);
@@ -127,7 +123,6 @@ public class WeaponDirection extends JFrame {
 				}
 			});
 			contentPane.add(left);
-		
 			right = new JButton("RIGHT");
 			right.setVerticalAlignment(SwingConstants.BOTTOM);
 			right.setForeground(Color.WHITE);
@@ -166,17 +161,18 @@ public class WeaponDirection extends JFrame {
 			
 		}
 		
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\bc2.png"));
-		lblNewLabel.setBounds(0, 0, 700, 310);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\gerog\\eclipse-workspace\\Prueba\\src\\coliseo\\images\\p1_im.jpg"));
-		lblNewLabel_1.setBounds(25, 320, 219, 118);
-		contentPane.add(lblNewLabel_1);
+		if(turn) {
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p1_im.png")));
+			lblNewLabel_1.setBounds(25, 320, 219, 118);
+			contentPane.add(lblNewLabel_1);
+		}
+		else {
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/p2.png")));
+			lblNewLabel_1.setBounds(25, 320, 219, 118);
+			contentPane.add(lblNewLabel_1);
+		}
 		
 		JLabel lblNewLabel_2 = new JLabel("Choose your weapon");
 		lblNewLabel_2.setFont(new Font("Yu Gothic", Font.BOLD, 25));
@@ -184,5 +180,42 @@ public class WeaponDirection extends JFrame {
 		lblNewLabel_2.setBounds(340, 321, 305, 51);
 		contentPane.add(lblNewLabel_2);
 		
+		JButton btnNewButton = new JButton("LEFT");
+		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnNewButton.setBackground(new Color(128, 128, 0));
+		btnNewButton.setFont(new Font("Yu Gothic", Font.BOLD, 11));
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBounds(350, 383, 100, 30);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Todo lo que quiero que se haga cuando se de clic al boton
+				o.setX(1);
+				
+				WeaponDirection.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("RIGHT");
+		btnNewButton_1.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setFont(new Font("Yu Gothic", Font.BOLD, 11));
+		btnNewButton_1.setBackground(new Color(0, 0, 139));
+		btnNewButton_1.setBounds(503, 383, 100, 30);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Todo lo que quiero que se haga cuando se de clic al boton
+				o.setX(2);
+				
+				WeaponDirection.this.dispose();
+			}
+		});
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
+		lblNewLabel.setBounds(0, 0, 700, 310);
+		contentPane.add(lblNewLabel);
 	}
 }

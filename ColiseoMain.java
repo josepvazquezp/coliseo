@@ -1,5 +1,7 @@
 package proyecto;
 
+import javax.swing.SwingUtilities;
+
 import com.iteso.motor.Direction;
 import com.iteso.motor.Equipment;
 import com.iteso.motor.Weapon;
@@ -400,10 +402,11 @@ public class ColiseoMain {
 		else
 			P2_A = 2;
 		
-		Battle b = new Battle(r, true, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
-		Battle b2 = new Battle(r2, false, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
+		Battle b = new Battle(r, r2, true, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
+		Battle b2 = new Battle(r2, r, false, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
 		
-		WeaponDirection wd = new WeaponDirection(o2);
+		WeaponDirection wd = new WeaponDirection(P1_W_R, P1_W_L, o2, true);
+		WeaponDirection wd2 = new WeaponDirection(P2_W_R, P2_W_L, o2, false);
 		ActionDirection rd = null;
 		MapShot ms = null;
 		
@@ -441,11 +444,11 @@ public class ColiseoMain {
 					
 					rd.setVisible(true);
 				}
-					
+				
 			}
 			else if(turn == false) {
 				if((o.getX() == 1 || o.getX() == 4) && o2.getX() == 0)
-					wd.setVisible(true);
+					wd2.setVisible(true);
 				
 				if(o.getX() == 3) { 
 					jumpP2 = true;
@@ -477,24 +480,48 @@ public class ColiseoMain {
 				if(jumpP2 == true)
 					r2.jump(false);
 				
+				if(P1_A == 1 && r.getE().getArmorB() == null)
+					P1_A = 0;
+				else if(P1_A == 2 && r.getE().getArmorH() == null)
+					P1_A = 0;
+				
+				if(P2_A == 1 && r2.getE().getArmorB() == null)
+					P2_A = 0;
+				else if(P2_A == 2 && r2.getE().getArmorH() == null)
+					P2_A = 0;
+				
+				b = new Battle(r, r2, true, o, r.getBaseSpeed(), r2.getBaseSpeed(),
+						       r.getE().getWeaponR() != null? P1_W_R : 0, 
+						       r.getE().getWeaponL() != null? P1_W_L : 0, 
+						       r2.getE().getWeaponR() != null? P2_W_R : 0, 
+						       r2.getE().getWeaponL() != null? P2_W_L : 0, 
+						       P1_A, P2_A);
+
+				b2 = new Battle(r2, r, false, o, r.getBaseSpeed(), r2.getBaseSpeed(), P1_W_R, P1_W_L, P2_W_R, P2_W_L, P1_A, P2_A);
+				
+				System.out.println(r);
+				System.out.println(r2);
 				turn = !turn;
 			}
 			
-//			if(o.getX() == 0 && o2.getX() == 0)
-//				turn = !turn;
 			
-//			if(r.getHp() == 0) {
-//				o.setX(5);
-//				temp = false;
-//			}
-//			
-//			if(r2.getHp() == 0) {
-//				o.setX(6);
-//				temp = false;
-//			}
+			if(r.getHp() == 0) {
+				o.setX(5);
+				temp = false;
+			}
+			
+			if(r2.getHp() == 0) {
+				o.setX(6);
+				temp = false;
+			}
 			
 		}
 		
+		Winner wins;
+		if(o.getX() == 5)
+			wins = new Winner(true);
+		else if(o.getX() == 6)
+			wins = new Winner(false);
 		
 	}
 }

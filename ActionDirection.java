@@ -53,6 +53,8 @@ public class ActionDirection extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		
 		
 		JButton btnNewButton = new JButton("DOWN");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -70,19 +72,19 @@ public class ActionDirection extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel_2 = new JLabel("P1");
-		lblNewLabel_2.setForeground(Color.BLUE);
-		lblNewLabel_2.setFont(new Font("Yu Gothic", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(70, 200, 49, 33);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("P2");
-		lblNewLabel_2_1.setForeground(Color.RED);
-		lblNewLabel_2_1.setFont(new Font("Yu Gothic", Font.BOLD, 20));
-		lblNewLabel_2_1.setBounds(581, 200, 49, 33);
-		contentPane.add(lblNewLabel_2_1);
-		btnNewButton.setBounds(585, 340, 110, 23);
-		contentPane.add(btnNewButton);
+		int x, y, x2, y2;
+		if(turn) {
+			x = r.getX();
+			y = r.getY();
+			x2 = r2.getX();
+			y2 = r2.getY();
+		}
+		else {
+			x = r2.getX();
+			y = r2.getY();
+			x2 = r.getX();
+			y2 = r.getY();
+		}
 		
 		JButton btnNewButton_2 = new JButton("DOWN_LEFT");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -140,12 +142,6 @@ public class ActionDirection extends JFrame {
 			}
 		});
 		contentPane.add(btnNewButton_3);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
-		lblNewLabel.setBounds(0, 0, 700, 310);
-		contentPane.add(lblNewLabel);
 		
 		if(turn) {
 			JLabel lblNewLabel_1 = new JLabel("");
@@ -239,171 +235,105 @@ public class ActionDirection extends JFrame {
 		JButton btnNewButton_4 = new JButton("s1");
 		btnNewButton_4.setBackground(new Color(201, 164, 97));
 		btnNewButton_4.setBounds(0, 204, 140, 35);
-		btnNewButton_4.setEnabled(false);
+		btnNewButton_4.setEnabled(true);
 		contentPane.add(btnNewButton_4);
 		
 		JButton btnNewButton_4_1 = new JButton("s2");
 		btnNewButton_4_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_1.setBounds(0, 239, 140, 35);
-		btnNewButton_4_1.setEnabled(false);
+		btnNewButton_4_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_1);
 		
 		JButton btnNewButton_4_1_1 = new JButton("s3");
 		btnNewButton_4_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_1_1.setBounds(0, 274, 140, 35);
-		btnNewButton_4_1_1.setEnabled(false);
+		btnNewButton_4_1_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_1_1);
 		
 		JButton btnNewButton_4_2 = new JButton("s4");
 		btnNewButton_4_2.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2.setBounds(140, 204, 140, 35);
-		btnNewButton_4_2.setEnabled(false);
+		btnNewButton_4_2.setEnabled(true);
 		contentPane.add(btnNewButton_4_2);
 		
 		JButton btnNewButton_4_2_1 = new JButton("s5");
 		btnNewButton_4_2_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_1.setBounds(140, 239, 140, 35);
-		btnNewButton_4_2_1.setEnabled(false);
+		btnNewButton_4_2_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_1);
 		
 		JButton btnNewButton_4_2_1_1 = new JButton("s6");
 		btnNewButton_4_2_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_1_1.setBounds(140, 274, 140, 35);
-		btnNewButton_4_2_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S6X, ArenaMap.S6Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
+		btnNewButton_4_2_1_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_1_1);
 		
 		JButton btnNewButton_4_2_2 = new JButton("s7");
 		btnNewButton_4_2_2.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2.setBounds(280, 204, 140, 35);
-		btnNewButton_4_2_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S7X, ArenaMap.S7Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
 		contentPane.add(btnNewButton_4_2_2);
 		
 		JButton btnNewButton_4_2_2_1 = new JButton("s8");
 		btnNewButton_4_2_2_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1.setBounds(280, 239, 140, 35);
-		btnNewButton_4_2_2_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S8X, ArenaMap.S8Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
+		btnNewButton_4_2_2_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_2_1);
 		
 		JButton btnNewButton_4_2_2_1_1 = new JButton("s9");
 		btnNewButton_4_2_2_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1_1.setBounds(280, 274, 140, 35);
-		btnNewButton_4_2_2_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S9X, ArenaMap.S9Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
+		btnNewButton_4_2_2_1_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_2_1_1);
 		
 		JButton btnNewButton_4_2_2_1_1_1 = new JButton("s10");
 		btnNewButton_4_2_2_1_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1_1_1.setBounds(420, 204, 140, 35);
-		btnNewButton_4_2_2_1_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S10X, ArenaMap.S10Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
+		btnNewButton_4_2_2_1_1_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_2_1_1_1);
 		
 		JButton btnNewButton_4_2_2_1_1_1_1 = new JButton("s11");
 		btnNewButton_4_2_2_1_1_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1_1_1_1.setBounds(420, 239, 140, 35);
-		btnNewButton_4_2_2_1_1_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S11X, ArenaMap.S11Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
 		contentPane.add(btnNewButton_4_2_2_1_1_1_1);
 		
 		JButton btnNewButton_4_2_2_1_1_1_1_1 = new JButton("s12");
 		btnNewButton_4_2_2_1_1_1_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1_1_1_1_1.setBounds(420, 274, 140, 35);
-		btnNewButton_4_2_2_1_1_1_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S12X, ArenaMap.S12Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
 		contentPane.add(btnNewButton_4_2_2_1_1_1_1_1);
-		
-		JButton btnNewButton_4_2_2_1_1_1_2 = new JButton("s13");
-		btnNewButton_4_2_2_1_1_1_2.setBackground(new Color(201, 164, 97));
-		btnNewButton_4_2_2_1_1_1_2.setBounds(560, 204, 140, 35);
-		btnNewButton_4_2_2_1_1_1_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S13X, ArenaMap.S13Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
-		contentPane.add(btnNewButton_4_2_2_1_1_1_2);
-		
-		JButton btnNewButton_4_2_2_1_1_1_2_1 = new JButton("s14");
-		btnNewButton_4_2_2_1_1_1_2_1.setBackground(new Color(201, 164, 97));
-		btnNewButton_4_2_2_1_1_1_2_1.setBounds(560, 239, 140, 35);
-		btnNewButton_4_2_2_1_1_1_2_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S14X, ArenaMap.S14Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
-		contentPane.add(btnNewButton_4_2_2_1_1_1_2_1);
 		
 		JButton btnNewButton_4_2_2_1_1_1_2_1_1 = new JButton("s15");
 		btnNewButton_4_2_2_1_1_1_2_1_1.setBackground(new Color(201, 164, 97));
 		btnNewButton_4_2_2_1_1_1_2_1_1.setBounds(560, 274, 140, 35);
-		btnNewButton_4_2_2_1_1_1_2_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				r.shot(ArenaMap.S15X, ArenaMap.S15Y, r2, o.getX() == 1? Direction.LEFT : Direction.RIGHT, r.getX() < r2.getX()? Direction.RIGHT : Direction.LEFT);
-				
-				o.setX(99);
-				
-				MapShot.this.dispose();
-			}
-		});
+		btnNewButton_4_2_2_1_1_1_2_1_1.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_2_1_1_1_2_1_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_2_1 = new JButton("s14");
+		btnNewButton_4_2_2_1_1_1_2_1.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_2_1.setBounds(560, 239, 140, 35);
+		btnNewButton_4_2_2_1_1_1_2_1.setEnabled(true);
+		contentPane.add(btnNewButton_4_2_2_1_1_1_2_1);
+		
+		JButton btnNewButton_4_2_2_1_1_1_2 = new JButton("s13");
+		btnNewButton_4_2_2_1_1_1_2.setBackground(new Color(201, 164, 97));
+		btnNewButton_4_2_2_1_1_1_2.setBounds(560, 204, 140, 35);
+		btnNewButton_4_2_2_1_1_1_2.setEnabled(true);
+		contentPane.add(btnNewButton_4_2_2_1_1_1_2);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
+		lblNewLabel.setBounds(0, 0, 700, 310);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("P1:");
+		lblNewLabel_2.setFont(new Font("Yu Gothic", Font.BOLD, 15));
+		lblNewLabel_2.setForeground(Color.WHITE);
+		if(turn) {
+			if(r.getX() == ArenaMap.S1X && r.getY() == ArenaMap.S1Y)
+				lblNewLabel_2.setText("P1: s1");
+		}
+		
+		lblNewLabel_2.setBounds(235, 424, 86, 28);
+		contentPane.add(lblNewLabel_2);
 	}
 }
