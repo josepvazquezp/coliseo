@@ -268,7 +268,7 @@ public class SelectMaterial extends JFrame {
 		
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setBounds(0, 0, 700, 500);
+		setBounds(100, 100, 700, 500);
 	}
 
 }

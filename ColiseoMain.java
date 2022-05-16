@@ -134,6 +134,7 @@ public class ColiseoMain {
 			}
 			
 		}
+		cL.setVisible(false);
 		
 		r.setE(e1);
 		r.includeShield();
@@ -286,7 +287,7 @@ public class ColiseoMain {
 			}
 			
 		}
-		
+		cL.setVisible(false);
 		r2.setE(e2);
 		r2.includeShield();
 		
@@ -470,6 +471,16 @@ public class ColiseoMain {
 				}
 			}
 			
+			if(r.getHp() <= 0) {
+				o.setX(5);
+				temp = true;
+			}
+			
+			if(r2.getHp() <= 0) {
+				o.setX(6);
+				temp = true;
+			}
+			
 			if(o.getX() == 99) {
 				o.setX(0);
 				o2.setX(0);
@@ -506,24 +517,15 @@ public class ColiseoMain {
 				turn = !turn;
 			}
 			
-			
-			if(r.getHp() == 0) {
-				o.setX(5);
-				temp = false;
-			}
-			
-			if(r2.getHp() == 0) {
-				o.setX(6);
-				temp = false;
-			}
-			
 		}
 		
-		Winner wins;
+		Winner wins = null;
 		if(o.getX() == 5)
-			wins = new Winner(true);
-		else if(o.getX() == 6)
 			wins = new Winner(false);
+		else if(o.getX() == 6)
+			wins = new Winner(true);
+		
+		wins.setVisible(true);
 		
 	}
 }

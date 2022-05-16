@@ -84,12 +84,6 @@ public class WeaponDirection extends JFrame {
 			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/kunai_c.png")));
 			break;
 		case 4:
-			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/mace_c.png")));
-			break;
-		case 5:
-			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/lonaxe_c.png")));
-			break;
-		case 6:
 			WL = new JLabel(new ImageIcon(Battle.class.getResource("/proyecto/images/shield_c.png")));
 			break;
 		default: break;
@@ -180,38 +174,38 @@ public class WeaponDirection extends JFrame {
 		lblNewLabel_2.setBounds(340, 321, 305, 51);
 		contentPane.add(lblNewLabel_2);
 		
-		JButton btnNewButton = new JButton("LEFT");
-		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNewButton.setBackground(new Color(128, 128, 0));
-		btnNewButton.setFont(new Font("Yu Gothic", Font.BOLD, 11));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBounds(350, 383, 100, 30);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Todo lo que quiero que se haga cuando se de clic al boton
-				o.setX(1);
-				
-				WeaponDirection.this.dispose();
-			}
-		});
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("RIGHT");
-		btnNewButton_1.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setFont(new Font("Yu Gothic", Font.BOLD, 11));
-		btnNewButton_1.setBackground(new Color(0, 0, 139));
-		btnNewButton_1.setBounds(503, 383, 100, 30);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Todo lo que quiero que se haga cuando se de clic al boton
-				o.setX(2);
-				
-				WeaponDirection.this.dispose();
-			}
-		});
-		contentPane.add(btnNewButton_1);
-		
+//		JButton btnNewButton = new JButton("LEFT");
+//		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
+//		btnNewButton.setBackground(new Color(128, 128, 0));
+//		btnNewButton.setFont(new Font("Yu Gothic", Font.BOLD, 11));
+//		btnNewButton.setForeground(Color.WHITE);
+//		btnNewButton.setBounds(350, 383, 100, 30);
+//		btnNewButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				// Todo lo que quiero que se haga cuando se de clic al boton
+//				o.setX(1);
+//				
+//				WeaponDirection.this.dispose();
+//			}
+//		});
+//		contentPane.add(btnNewButton);
+//		
+//		JButton btnNewButton_1 = new JButton("RIGHT");
+//		btnNewButton_1.setVerticalAlignment(SwingConstants.BOTTOM);
+//		btnNewButton_1.setForeground(Color.WHITE);
+//		btnNewButton_1.setFont(new Font("Yu Gothic", Font.BOLD, 11));
+//		btnNewButton_1.setBackground(new Color(0, 0, 139));
+//		btnNewButton_1.setBounds(503, 383, 100, 30);
+//		btnNewButton_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				// Todo lo que quiero que se haga cuando se de clic al boton
+//				o.setX(2);
+//				
+//				WeaponDirection.this.dispose();
+//			}
+//		});
+//		contentPane.add(btnNewButton_1);
+//		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(Color.BLACK);
 		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));

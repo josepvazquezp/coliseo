@@ -90,9 +90,9 @@ public class Role implements Hitbox{
 	 */
 	public void setHp(int hp) throws NegativeNumberFound {
 		if(hp < 0)
-			throw new NegativeNumberFound(hp);
-		
-		this.hp = hp;
+			this.hp = 0;
+		else
+			this.hp = hp;
 	}
 	
 	/**
