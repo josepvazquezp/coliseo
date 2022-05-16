@@ -71,20 +71,8 @@ public class ActionDirection extends JFrame {
 				ActionDirection.this.dispose();
 			}
 		});
-		
-		int x, y, x2, y2;
-		if(turn) {
-			x = r.getX();
-			y = r.getY();
-			x2 = r2.getX();
-			y2 = r2.getY();
-		}
-		else {
-			x = r2.getX();
-			y = r2.getY();
-			x2 = r.getX();
-			y2 = r.getY();
-		}
+		btnNewButton.setBounds(585, 340, 110, 23);
+		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("DOWN_LEFT");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -319,21 +307,151 @@ public class ActionDirection extends JFrame {
 		btnNewButton_4_2_2_1_1_1_2.setEnabled(true);
 		contentPane.add(btnNewButton_4_2_2_1_1_1_2);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
-		lblNewLabel.setBounds(0, 0, 700, 310);
-		contentPane.add(lblNewLabel);
-		
 		JLabel lblNewLabel_2 = new JLabel("P1:");
 		lblNewLabel_2.setFont(new Font("Yu Gothic", Font.BOLD, 15));
 		lblNewLabel_2.setForeground(Color.WHITE);
 		if(turn) {
 			if(r.getX() == ArenaMap.S1X && r.getY() == ArenaMap.S1Y)
 				lblNewLabel_2.setText("P1: s1");
+			else if(r.getX() == ArenaMap.S2X && r.getY() == ArenaMap.S2Y)
+				lblNewLabel_2.setText("P1: s2");
+			else if(r.getX() == ArenaMap.S3X && r.getY() == ArenaMap.S3Y)
+				lblNewLabel_2.setText("P1: s3");
+			else if(r.getX() == ArenaMap.S4X && r.getY() == ArenaMap.S4Y)
+				lblNewLabel_2.setText("P1: s4");
+			else if(r.getX() == ArenaMap.S5X && r.getY() == ArenaMap.S5Y)
+				lblNewLabel_2.setText("P1: s5");
+			else if(r.getX() == ArenaMap.S6X && r.getY() == ArenaMap.S6Y)
+				lblNewLabel_2.setText("P1: s6");
+			else if(r.getX() == ArenaMap.S7X && r.getY() == ArenaMap.S7Y)
+				lblNewLabel_2.setText("P1: s7");
+			else if(r.getX() == ArenaMap.S8X && r.getY() == ArenaMap.S8Y)
+				lblNewLabel_2.setText("P1: s8");
+			else if(r.getX() == ArenaMap.S9X && r.getY() == ArenaMap.S9Y)
+				lblNewLabel_2.setText("P1: s9");
+			else if(r.getX() == ArenaMap.S10X && r.getY() == ArenaMap.S10Y)
+				lblNewLabel_2.setText("P1: s10");
+			else if(r.getX() == ArenaMap.S11X && r.getY() == ArenaMap.S11Y)
+				lblNewLabel_2.setText("P1: s11");
+			else if(r.getX() == ArenaMap.S12X && r.getY() == ArenaMap.S12Y)
+				lblNewLabel_2.setText("P1: s12");
+			else if(r.getX() == ArenaMap.S13X && r.getY() == ArenaMap.S13Y)
+				lblNewLabel_2.setText("P1: s13");
+			else if(r.getX() == ArenaMap.S14X && r.getY() == ArenaMap.S14Y)
+				lblNewLabel_2.setText("P1: s14");
+			else if(r.getX() == ArenaMap.S15X && r.getY() == ArenaMap.S15Y)
+				lblNewLabel_2.setText("P1: s15");
+		}
+		else {
+			if(r2.getX() == ArenaMap.S1X && r2.getY() == ArenaMap.S1Y)
+				lblNewLabel_2.setText("P1: s1");
+			else if(r2.getX() == ArenaMap.S2X && r2.getY() == ArenaMap.S2Y)
+				lblNewLabel_2.setText("P1: s2");
+			else if(r2.getX() == ArenaMap.S3X && r2.getY() == ArenaMap.S3Y)
+				lblNewLabel_2.setText("P1: s3");
+			else if(r2.getX() == ArenaMap.S4X && r2.getY() == ArenaMap.S4Y)
+				lblNewLabel_2.setText("P1: s4");
+			else if(r2.getX() == ArenaMap.S5X && r2.getY() == ArenaMap.S5Y)
+				lblNewLabel_2.setText("P1: s5");
+			else if(r2.getX() == ArenaMap.S6X && r2.getY() == ArenaMap.S6Y)
+				lblNewLabel_2.setText("P1: s6");
+			else if(r2.getX() == ArenaMap.S7X && r2.getY() == ArenaMap.S7Y)
+				lblNewLabel_2.setText("P1: s7");
+			else if(r2.getX() == ArenaMap.S8X && r2.getY() == ArenaMap.S8Y)
+				lblNewLabel_2.setText("P1: s8");
+			else if(r2.getX() == ArenaMap.S9X && r2.getY() == ArenaMap.S9Y)
+				lblNewLabel_2.setText("P1: s9");
+			else if(r2.getX() == ArenaMap.S10X && r2.getY() == ArenaMap.S10Y)
+				lblNewLabel_2.setText("P1: s10");
+			else if(r2.getX() == ArenaMap.S11X && r2.getY() == ArenaMap.S11Y)
+				lblNewLabel_2.setText("P1: s11");
+			else if(r2.getX() == ArenaMap.S12X && r2.getY() == ArenaMap.S12Y)
+				lblNewLabel_2.setText("P1: s12");
+			else if(r2.getX() == ArenaMap.S13X && r2.getY() == ArenaMap.S13Y)
+				lblNewLabel_2.setText("P1: s13");
+			else if(r2.getX() == ArenaMap.S14X && r2.getY() == ArenaMap.S14Y)
+				lblNewLabel_2.setText("P1: s14");
+			else if(r2.getX() == ArenaMap.S15X && r2.getY() == ArenaMap.S15Y)
+				lblNewLabel_2.setText("P1: s15");
 		}
 		
 		lblNewLabel_2.setBounds(235, 424, 86, 28);
 		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("P2:");
+		lblNewLabel_2_1.setForeground(Color.WHITE);
+		lblNewLabel_2_1.setFont(new Font("Yu Gothic", Font.BOLD, 15));
+		if(turn) {
+			if(r2.getX() == ArenaMap.S1X && r2.getY() == ArenaMap.S1Y)
+				lblNewLabel_2_1.setText("P2: s1");
+			else if(r2.getX() == ArenaMap.S2X && r2.getY() == ArenaMap.S2Y)
+				lblNewLabel_2_1.setText("P2: s2");
+			else if(r2.getX() == ArenaMap.S3X && r2.getY() == ArenaMap.S3Y)
+				lblNewLabel_2_1.setText("P2: s3");
+			else if(r2.getX() == ArenaMap.S4X && r2.getY() == ArenaMap.S4Y)
+				lblNewLabel_2_1.setText("P2: s4");
+			else if(r2.getX() == ArenaMap.S5X && r2.getY() == ArenaMap.S5Y)
+				lblNewLabel_2_1.setText("P2: s5");
+			else if(r2.getX() == ArenaMap.S6X && r2.getY() == ArenaMap.S6Y)
+				lblNewLabel_2_1.setText("P2: s6");
+			else if(r2.getX() == ArenaMap.S7X && r2.getY() == ArenaMap.S7Y)
+				lblNewLabel_2_1.setText("P2: s7");
+			else if(r2.getX() == ArenaMap.S8X && r2.getY() == ArenaMap.S8Y)
+				lblNewLabel_2_1.setText("P2: s8");
+			else if(r2.getX() == ArenaMap.S9X && r2.getY() == ArenaMap.S9Y)
+				lblNewLabel_2_1.setText("P2: s9");
+			else if(r2.getX() == ArenaMap.S10X && r2.getY() == ArenaMap.S10Y)
+				lblNewLabel_2_1.setText("P2: s10");
+			else if(r2.getX() == ArenaMap.S11X && r2.getY() == ArenaMap.S11Y)
+				lblNewLabel_2_1.setText("P2: s11");
+			else if(r2.getX() == ArenaMap.S12X && r2.getY() == ArenaMap.S12Y)
+				lblNewLabel_2_1.setText("P2: s12");
+			else if(r2.getX() == ArenaMap.S13X && r2.getY() == ArenaMap.S13Y)
+				lblNewLabel_2_1.setText("P2: s13");
+			else if(r2.getX() == ArenaMap.S14X && r2.getY() == ArenaMap.S14Y)
+				lblNewLabel_2_1.setText("P2: s14");
+			else if(r2.getX() == ArenaMap.S15X && r2.getY() == ArenaMap.S15Y)
+				lblNewLabel_2_1.setText("P2: s15");
+		}
+		else {
+			if(r.getX() == ArenaMap.S1X && r.getY() == ArenaMap.S1Y)
+				lblNewLabel_2_1.setText("P2: s1");
+			else if(r.getX() == ArenaMap.S2X && r.getY() == ArenaMap.S2Y)
+				lblNewLabel_2_1.setText("P2: s2");
+			else if(r.getX() == ArenaMap.S3X && r.getY() == ArenaMap.S3Y)
+				lblNewLabel_2_1.setText("P2: s3");
+			else if(r.getX() == ArenaMap.S4X && r.getY() == ArenaMap.S4Y)
+				lblNewLabel_2_1.setText("P2: s4");
+			else if(r.getX() == ArenaMap.S5X && r.getY() == ArenaMap.S5Y)
+				lblNewLabel_2_1.setText("P2: s5");
+			else if(r.getX() == ArenaMap.S6X && r.getY() == ArenaMap.S6Y)
+				lblNewLabel_2_1.setText("P2: s6");
+			else if(r.getX() == ArenaMap.S7X && r.getY() == ArenaMap.S7Y)
+				lblNewLabel_2_1.setText("P2: s7");
+			else if(r.getX() == ArenaMap.S8X && r.getY() == ArenaMap.S8Y)
+				lblNewLabel_2_1.setText("P2: s8");
+			else if(r.getX() == ArenaMap.S9X && r.getY() == ArenaMap.S9Y)
+				lblNewLabel_2_1.setText("P2: s9");
+			else if(r.getX() == ArenaMap.S10X && r.getY() == ArenaMap.S10Y)
+				lblNewLabel_2_1.setText("P2: s10");
+			else if(r.getX() == ArenaMap.S11X && r.getY() == ArenaMap.S11Y)
+				lblNewLabel_2_1.setText("P2: s11");
+			else if(r.getX() == ArenaMap.S12X && r.getY() == ArenaMap.S12Y)
+				lblNewLabel_2_1.setText("P2: s12");
+			else if(r.getX() == ArenaMap.S13X && r.getY() == ArenaMap.S13Y)
+				lblNewLabel_2_1.setText("P2: s13");
+			else if(r.getX() == ArenaMap.S14X && r.getY() == ArenaMap.S14Y)
+				lblNewLabel_2_1.setText("P2: s14");
+			else if(r.getX() == ArenaMap.S15X && r.getY() == ArenaMap.S15Y)
+				lblNewLabel_2_1.setText("P2: s15");
+		}
+		lblNewLabel_2_1.setBounds(397, 424, 86, 28);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setIcon(new ImageIcon(Battle.class.getResource("/proyecto/images/bc2.png")));
+		lblNewLabel.setBounds(0, 0, 700, 310);
+		contentPane.add(lblNewLabel);
 	}
 }

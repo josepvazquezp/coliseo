@@ -480,6 +480,8 @@ public class ColiseoMain {
 				if(jumpP2 == true)
 					r2.jump(false);
 				
+				rd = null;
+				
 				if(P1_A == 1 && r.getE().getArmorB() == null)
 					P1_A = 0;
 				else if(P1_A == 2 && r.getE().getArmorH() == null)
